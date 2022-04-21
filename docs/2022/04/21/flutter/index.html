@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>flutter | Lzccheng</title>
+  <meta name="author" content="Lzccheng" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="dart, flutter" />
+  
+  <meta name="description" content="基础入门dart：类型： num、int、double、String、void、dynamic、set、list、map（Numbers、Strings、Booleans、Lists、Sets、Maps、Runes、Symbels、null）定义变量： var、const、final字符串插值： $变量、$&amp;#123;变量&amp;#125;?.&#x2F;??&#x2F;泛型&#x2F;minxins、 空安全：1、可空（?）类型的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter">
+<meta property="og:url" content="http://example.com/2022/04/21/flutter/index.html">
+<meta property="og:site_name" content="Lzccheng">
+<meta property="og:description" content="基础入门dart：类型： num、int、double、String、void、dynamic、set、list、map（Numbers、Strings、Booleans、Lists、Sets、Maps、Runes、Symbels、null）定义变量： var、const、final字符串插值： $变量、$&amp;#123;变量&amp;#125;?.&#x2F;??&#x2F;泛型&#x2F;minxins、 空安全：1、可空（?）类型的">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-21T08:07:38.000Z">
+<meta property="article:modified_time" content="2022-04-21T09:33:48.823Z">
+<meta property="article:author" content="Lzccheng">
+<meta property="article:tag" content="flutter">
+<meta property="article:tag" content="dart">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" type="text/css" media="(prefers-color-scheme: dark)">
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://unpkg.com/nprogress@0.2.0/nprogress.css" type="text/css" media="all">
+  
+  
+  
+    <link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+  
+  
+    <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://unpkg.com/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">Lzccheng</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>Lzccheng</h2> <br />
+                        <span>分享vue、flutter、ract、node等干货，做个咸鱼前端人</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/21/flutter/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">flutter</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2022-04-21T08:07:38.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-04-21</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">Lzccheng</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~14.56K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1650533628823"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h3 id="基础入门"><a href="#基础入门" class="headerlink" title="基础入门"></a>基础入门</h3><p>dart：<br>类型： <code>num、int、double、String、void、dynamic、set、list、map（Numbers、Strings、Booleans、Lists、Sets、Maps、Runes、Symbels、null）</code><br>定义变量： <code>var、const、final</code><br>字符串插值： <code>$变量、$&#123;变量&#125;</code><br><code>?./??/泛型/minxins、</code></p>
+<p>空安全：<br>1、<br>可空（?）类型的使用：</p>
+<p>我们可以通过将?跟在类型的后面来表示它后面的变量或参数可接受Null：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommonModel</span> </span>&#123;</span><br><span class="line">  <span class="built_in">String?</span> firstName; <span class="comment">//可空的成员变量</span></span><br><span class="line">  <span class="built_in">int</span> getNameLen(<span class="built_in">String?</span> lastName <span class="comment">/*可空的参数*/</span>) &#123;</span><br><span class="line">    <span class="built_in">int</span> firstLen = firstName?.length ?? <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">int</span> lastLen = lastName?.length ?? <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> firstLen + lastLen;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于可空的变量或参数在使用的时候需要通过Dart 的避空运算符?.来进行访问，否则会抛出编译错误。<br>2、<br>当程序启用空安全后，类的成员变量默认是不可空的，所以对于一个非空的成员变量需要指定其初始化方式：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommonModel</span> </span>&#123;</span><br><span class="line">  <span class="built_in">List</span> names=[];<span class="comment">//定义时初始化</span></span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">List</span> colors;<span class="comment">//在构造方法中初始化</span></span><br><span class="line">  <span class="keyword">late</span> <span class="built_in">List</span> urls;<span class="comment">//延时初始化</span></span><br><span class="line">  CommonModel(<span class="keyword">this</span>.colors);</span><br></pre></td></tr></table></figure>
+<p>3、<br>延迟初始化（late）的使用<br>对于无法在定义时进行初始化，并且又想避免使用?.，那么延迟初始化可以帮到你。通过late修饰的变量，可以让开发者选择初始化的时机，并且在使用这个变量时可以不用?.。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">late</span> <span class="built_in">List</span> urls;<span class="comment">//延时初始化</span></span><br><span class="line">setUrls(<span class="built_in">List</span> urls)&#123;</span><br><span class="line">  <span class="keyword">this</span>.urls=urls;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">int</span> getUrlLen()&#123;</span><br><span class="line">  <span class="keyword">return</span> urls.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>延时初始化虽然能为我们编码带来一定便利，但如果使用不当会带来空异常的问题，所以在使用的时候一定保证赋值和访问的顺序，切莫颠倒。<br>4、<br>State的空安全适配<br>State的空安全适配主要是根据它的成员变量是否可空进行分类：</p>
+<p>可空的变量：通过?进行修饰<br>不可空的变量：可采用以下两种方式进行适配<br>定义时初始化<br>使用late修饰为延时变量</p>
+<h2 id="flutter-组件库：https-api-flutter-dev-flutter-painting-Accumulator-class-html"><a href="#flutter-组件库：https-api-flutter-dev-flutter-painting-Accumulator-class-html" class="headerlink" title="flutter 组件库：https://api.flutter.dev/flutter/painting/Accumulator-class.html"></a>flutter 组件库：<a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/painting/Accumulator-class.html">https://api.flutter.dev/flutter/painting/Accumulator-class.html</a></h2><h2 id="flutter-中文书：-https-book-flutterchina-club-preface-html"><a href="#flutter-中文书：-https-book-flutterchina-club-preface-html" class="headerlink" title="flutter 中文书： https://book.flutterchina.club/preface.html"></a>flutter 中文书： <a target="_blank" rel="noopener" href="https://book.flutterchina.club/preface.html">https://book.flutterchina.club/preface.html</a></h2><h2 id="flutter-功能例子：-https-ducafecat-tech"><a href="#flutter-功能例子：-https-ducafecat-tech" class="headerlink" title="flutter 功能例子： https://ducafecat.tech/"></a>flutter 功能例子： <a target="_blank" rel="noopener" href="https://ducafecat.tech/">https://ducafecat.tech/</a></h2><h1 id="flutter组件："><a href="#flutter组件：" class="headerlink" title="flutter组件： "></a>flutter组件： </h1><p>属性：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">width: <span class="number">172</span>,  <span class="comment">// 宽</span></span><br><span class="line">height: <span class="number">66</span>,  <span class="comment">// 高</span></span><br><span class="line">margin: EdgeInsets.only(top: <span class="number">15</span>),  <span class="comment">// margin  EdgeInsets</span></span><br><span class="line">padding: EdgeInsets.only(top: <span class="number">12</span>, left: <span class="number">30</span>), <span class="comment">// padding  EdgeInsets</span></span><br><span class="line">decoration: BoxDecoration(</span><br><span class="line">  color: Colors.white,  <span class="comment">// 颜色或者背景色  Colors</span></span><br><span class="line">  borderRadius: BorderRadius.circular(<span class="number">10</span>),  <span class="comment">// 圆角  BorderRadius</span></span><br><span class="line">  borderRadius: BorderRadius.only(topLeft: Radius.circular(<span class="number">10</span>),topRight: Radius.circular(<span class="number">10</span>)),  <span class="comment">// 设置上左和上右的圆角</span></span><br><span class="line">  border: Border.all(width: <span class="number">3</span>, style: BorderStyle.solid, color: ColorUtil.color(<span class="string">&#x27;#EDEFF8&#x27;</span>))  <span class="comment">// 边框  Border  BorderStyle</span></span><br><span class="line">  border: Border(left: BorderSide(color: ColorUtil.color(<span class="string">&#x27;ECEDF4&#x27;</span>), width: <span class="number">3</span>))  <span class="comment">// 左边border  BorderSide，</span></span><br><span class="line">  image: DecorationImage(  <span class="comment">// 背景图设置  DecorationImage</span></span><br><span class="line">    image: AssetImage(<span class="string">&#x27;<span class="subst">$&#123;imgPath&#125;</span>detail_bg.png&#x27;</span>),  <span class="comment">// 图片</span></span><br><span class="line">    fit: BoxFit.fill,  <span class="comment">// 填充方式</span></span><br><span class="line">  ),</span><br><span class="line">  gradient: LinearGradient(  <span class="comment">// 渐变</span></span><br><span class="line">    begin: Alignment.topCenter,  <span class="comment">// 开始渐变方向</span></span><br><span class="line">    end: Alignment.bottomCenter,  <span class="comment">// 结束方向</span></span><br><span class="line">    colors: [</span><br><span class="line">       ColorUtil.color(<span class="string">&#x27;80DDD8&#x27;</span>),  <span class="comment">// 开始颜色</span></span><br><span class="line">       ColorUtil.color(<span class="string">&#x27;448F87&#x27;</span>),  <span class="comment">// 结束颜色</span></span><br><span class="line">    ]</span><br><span class="line">  )</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<p>&#x3D;&#x3D;&#x3D;<br>状态组件： </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">StatefulWidget： </span><br><span class="line"><span class="meta">@override</span></span><br><span class="line">createState</span><br><span class="line"></span><br><span class="line">MaterialApp/Scaffold/AppBar/BottomNavigationBar/RefeshInddcator/Image/TextField/PageView</span><br><span class="line"></span><br><span class="line">StatelessWidget</span><br><span class="line"><span class="meta">@override</span></span><br><span class="line">Widget build(BuildContext context)</span><br><span class="line"></span><br><span class="line">Container/Text/Icon/CloseButton/BackButton/Chip/Divider/Card/AlertDialog</span><br></pre></td></tr></table></figure>
+<p>&#x3D;&#x3D;&#x3D;<br>布局相关组件</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Container</span><br><span class="line">RenderObjectWidget: </span><br><span class="line">   SingleChildRenderObjectWidget: Opacity/ClipOval/ClipRRect/PhysicalModel/Align/Center/Padding/SizeBox/FranctionallySizeBox： widthFactor: <span class="number">1</span>/</span><br><span class="line">   MultiChildRenderObjectWidget: Stack/Flex/Column/Row/Wrap/Flow</span><br><span class="line">ParentDataWidget: Positioned/Flexible/Expanded</span><br></pre></td></tr></table></figure>
+<p>&#x3D;&#x3D;&#x3D;<br>app组件： </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MaterialApp: title、theme、home、routes： <span class="built_in">Map</span>&lt;<span class="built_in">String</span>, WidgetBuilder&gt; routes;</span><br></pre></td></tr></table></figure>
+<p>&#x3D;&#x3D;&#x3D;<br>页面组件： </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Scaffold: appBar、body</span><br></pre></td></tr></table></figure>
+<p>&#x3D;&#x3D;&#x3D;<br>顶部导航： </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AppBar: title、leading、centerTitle</span><br></pre></td></tr></table></figure>
+<p>&#x3D;&#x3D;&#x3D;<br>span： </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Text: text、style</span><br></pre></td></tr></table></figure>
+<p>&#x3D;&#x3D;&#x3D;<br>button: </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextButton: onPressed、child  <span class="comment">// 文本按钮</span></span><br><span class="line">IconButton: onPressed、icon  <span class="comment">// 图标按钮</span></span><br><span class="line">ElevatedButton: onPressed、child</span><br><span class="line">BackButton: onPressed、color <span class="comment">// 返回按钮</span></span><br><span class="line">FloatingActionButton: onPressed、tooltip、child  <span class="comment">// 浮动按钮</span></span><br></pre></td></tr></table></figure>
+<p>&#x3D;&#x3D;&#x3D;</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">div: </span><br><span class="line">Row: children</span><br><span class="line">Column: children</span><br><span class="line">ListView: children <span class="comment">// 移除padding： MediaQuery.removePadding(context: context, removeTop: true, child: Widget)</span></span><br><span class="line">Container: child</span><br><span class="line">Center:</span><br><span class="line">Container(&#123;</span><br><span class="line">  <span class="keyword">this</span>.alignment, <span class="comment">// Alignment.center,</span></span><br><span class="line">  <span class="keyword">this</span>.padding, <span class="comment">//容器内补白，属于decoration的装饰范围  EdgeInsets.all(10), EdgeInsets: all、fromLTRB、only</span></span><br><span class="line">  Color color, <span class="comment">// 背景色</span></span><br><span class="line">  Decoration decoration, <span class="comment">// 背景装饰 decoration: BoxDecoration(color: Colors.purple, borderRadius: BorderRadius.circular(50)),</span></span><br><span class="line">  Decoration foregroundDecoration, <span class="comment">//前景装饰</span></span><br><span class="line">  <span class="built_in">double</span> width,<span class="comment">//容器的宽度</span></span><br><span class="line">  <span class="built_in">double</span> height, <span class="comment">//容器的高度</span></span><br><span class="line">  BoxConstraints constraints, <span class="comment">//容器大小的限制条件</span></span><br><span class="line">  <span class="keyword">this</span>.margin,<span class="comment">//容器外补白，不属于decoration的装饰范围 EdgeInsets.fromLTRB(10, 50, 10, 30),</span></span><br><span class="line">  <span class="keyword">this</span>.transform, <span class="comment">//变换</span></span><br><span class="line">  <span class="keyword">this</span>.child,</span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br><span class="line">Padding： padding: EdgeInsets.all(<span class="number">18</span>), child</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>form表单：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> _formKey = GlobalKey&lt;FormState&gt;();</span><br><span class="line">Form</span><br><span class="line">  key: _formKey,</span><br><span class="line">  TextFormField</span><br><span class="line">  TextFormField(</span><br><span class="line">		autovalidateMode: AutovalidateMode.always, <span class="comment">// 是否字段校验</span></span><br><span class="line">		validator: (val) &#123;&#125;,  <span class="comment">// 校验函数</span></span><br><span class="line">                onSaved: (val) &#123;  &#125;, <span class="comment">// 运行_formKey.currentState.save()时会被调用</span></span><br><span class="line">              obscureText: obscureText, <span class="comment">// 是否是密码框</span></span><br><span class="line">              decoration: InputDecoration(</span><br><span class="line">                hintText: hintText, <span class="comment">// placeholder</span></span><br><span class="line">                hintStyle: TextStyle(color: ColorUtil.color(<span class="string">&#x27;#99A0B1&#x27;</span>)), <span class="comment">// placeholder 样式</span></span><br><span class="line">                border: InputBorder.none, <span class="comment">// 边框</span></span><br><span class="line">              ),</span><br><span class="line">            )</span><br></pre></td></tr></table></figure></li>
+<li><p>表单提交：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _formState = _formKey.currentState;</span><br><span class="line"><span class="keyword">if</span> (_formState!.validate()) &#123;</span><br><span class="line">  _formState.save(); <span class="comment">// 会调用TextFormField的onSaved方法，可用于保存数据</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;validate ==== <span class="subst">$_params</span>&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Image</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assets 本地图片、network 网络图片、memory、file</span></span><br><span class="line"><span class="comment">// base64图片：</span></span><br><span class="line">Image.memory(Base64Decoder().convert($base64))</span><br></pre></td></tr></table></figure></li>
+<li><p>swiper:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PageView: children</span><br></pre></td></tr></table></figure></li>
+<li><p>flex:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Wrap: children</span><br></pre></td></tr></table></figure></li>
+<li><p>flutter路由：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导航路由 </span></span><br><span class="line">Navigator: push、pop、pushNamed、replace、popUntil  </span><br><span class="line"><span class="number">1</span>、Navigator.push(BuildContext context, Route route)等价于Navigator.of(context).push(Route route)</span><br><span class="line"><span class="number">2</span>、路由传参</span><br><span class="line"><span class="comment">// 命名路由传参</span></span><br><span class="line">Navigator.of(context).pushNamed(<span class="string">&quot;new_page&quot;</span>, arguments: <span class="string">&quot;hi&quot;</span>);</span><br><span class="line"><span class="comment">//获取路由参数  </span></span><br><span class="line"> <span class="keyword">var</span> args=ModalRoute.of(context).settings.arguments;</span><br><span class="line"></span><br><span class="line">        Navigator.push( </span><br><span class="line">          context,</span><br><span class="line">          MaterialPageRoute(builder: (context) &#123;</span><br><span class="line">            <span class="keyword">return</span> NewRoute();</span><br><span class="line">          &#125;),</span><br><span class="line">        );</span><br></pre></td></tr></table></figure></li>
+<li><p>fluter 事件</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GusturDetector: onTop 点击/onLongPress 长按/onDoubleTap 双击/onTapCalcel 取消/onTapUp 松开/onTapDown 按下/onPanUpdate 拖动时触发，等同onMove事件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>图片资源</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 本地：</span></span><br><span class="line"><span class="number">1</span>、在pubspec.yaml下导入</span><br><span class="line">flutter:</span><br><span class="line">  assets:</span><br><span class="line">    - assets/my_icon.png</span><br><span class="line"><span class="number">2</span>、使用</span><br><span class="line">Image( image: AssetsImage(<span class="string">&#x27;assets/my_icon.png&#x27;</span>) ) / Image.assets(<span class="string">&#x27;assets/my_icon.png&#x27;</span>)</span><br><span class="line"><span class="comment">// 网络图片：</span></span><br><span class="line">Image( image: NetWorkImage(url) ) / Image.network(url)</span><br></pre></td></tr></table></figure></li>
+<li><p>打开第三方App</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用包url_launcher</span></span><br><span class="line"><span class="keyword">var</span> isOk = <span class="keyword">await</span> canLaunch(url);</span><br><span class="line">isOk ? launch(url) : $tips(<span class="string">&#x27;打开失败&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>生命周期</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">StatelessWidget只有createElement和build两个生命周期</span><br><span class="line">StatefulWidget:</span><br><span class="line"><span class="number">1</span>、初始化</span><br><span class="line">  createState、initState</span><br><span class="line"><span class="number">2</span>、更新期</span><br><span class="line">  didChangeDependencies  <span class="comment">// mounted</span></span><br><span class="line">  build  <span class="comment">// </span></span><br><span class="line">  didUpdateWidget</span><br><span class="line"><span class="number">3</span>、销毁期</span><br><span class="line">  deactivcate、dispose</span><br></pre></td></tr></table></figure>
+<p>&#x2F;&#x2F; 应用生命周期<br>进入前台<br>进入后台<br>挂起</p>
+</li>
+<li><p>动态修改主题</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MaterialApp</span><br><span class="line">  theme: ThemeData(&#123; </span><br><span class="line">	brightness: Brightness.dark <span class="comment">// dark 夜间模式、light 日间模式,</span></span><br><span class="line">	primarySwatch: Colors.blue <span class="comment">// 主题色</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p>自定义字体</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、下载并引入字体</span></span><br><span class="line">pubspec.yaml</span><br><span class="line">  fonts:</span><br><span class="line">    - family: $fontName <span class="comment">// 字体库名</span></span><br><span class="line">        - asset: $Path <span class="comment">// 字体路径</span></span><br><span class="line"><span class="comment">// 2、使用字体</span></span><br><span class="line"><span class="comment">//   全局使用：</span></span><br><span class="line">    MaterialApp</span><br><span class="line">      theme: ThemeData(&#123; fontFamily: $fontName <span class="comment">// 字体库名 &#125;)</span></span><br><span class="line"><span class="comment">//   局部使用：</span></span><br><span class="line">    Text(<span class="string">&#x27;mssage&#x27;</span>, style: TextStyle(fontFamily: $fontName <span class="comment">// 字体库名))</span></span><br></pre></td></tr></table></figure></li>
+<li><p>选择手机图片 使用包： image_picker  &#x2F;&#x2F; 需要兼容Android X配置</p>
+</li>
+<li><p>轮播swiper</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用包： flutter_swiper</span></span><br><span class="line">            Swiper(</span><br><span class="line">                itemCount: _images.length,</span><br><span class="line">                autoplay: <span class="keyword">true</span>,</span><br><span class="line">                itemBuilder: (BuildContext context, i) &#123;</span><br><span class="line">                  <span class="keyword">return</span> Image.network(_images[i], fit: BoxFit.fill,);</span><br><span class="line">                &#125;,</span><br><span class="line">                pagination: <span class="keyword">const</span> SwiperPagination(builder: SwiperPagination.dots),</span><br><span class="line">            )</span><br><span class="line"><span class="comment">// 移除padding： MediaQuery.removePadding(context: context, removeTop: true, child: Widget)</span></span><br><span class="line"><span class="comment">// 滚动监听： NotificationListener(onNotifation: (scrollNotication) &#123;</span></span><br><span class="line">  <span class="comment">// scrollNotication is ScrollUpdateNavification 滚动是否更新条件</span></span><br><span class="line">  <span class="comment">// scrollNotication.depth == 0 监听child深度数条件</span></span><br><span class="line">  <span class="keyword">if</span> (scrollNotication <span class="keyword">is</span> ScrollUpdateNavification &amp;&amp; scrollNotication.depth == <span class="number">0</span>) &#123; _onScroll(scrollNotication.metries.pixels) &#125;</span><br><span class="line">&#125;, child: Widget)</span><br></pre></td></tr></table></figure></li>
+<li><p>http网络请求 使用包： http、dart:convert</p>
+</li>
+<li><p>异步： Future、FutureBuilder</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 链式调用： </span></span><br><span class="line">Future: </span><br><span class="line">then <span class="comment">// then((res)&#123;&#125;, (err) &#123;&#125;)</span></span><br><span class="line">catchError <span class="comment">// catchError((err) &#123;&#125;) 错误捕获</span></span><br><span class="line">whenComplete <span class="comment">// whenComplete(()&#123;&#125;) 完成是调用</span></span><br><span class="line">timeout <span class="comment">// timeout(Duration(&#123; seconds: 10 &#125;)) 超时设置</span></span><br><span class="line"><span class="keyword">new</span> Future.timeout(<span class="built_in">Duration</span>(&#123; secounds: <span class="number">3</span> &#125;)).then().catchError((err)&#123;&#125;).whenComplete(()&#123;&#125;)</span><br><span class="line"></span><br><span class="line">FutureBuilder&lt;T&gt;： </span><br><span class="line">  future: Future,</span><br><span class="line">  builder: (BuildContext context, AsyncSnapshot&lt;T&gt; snapshot) &#123;</span><br><span class="line">    <span class="keyword">switch</span>(snapshot.connectionState) &#123;</span><br><span class="line">      <span class="keyword">case</span>: ConnectionState.waiting:</span><br><span class="line">        <span class="comment">// 等待状态</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">const</span> CircularProgressIndicator();  <span class="comment">// 返回loading Widget</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载中…loading Widget: CircularProgressIndicator</p>
+</li>
+<li><p>shared_preferences本地存储</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// shared_preferences包</span></span><br><span class="line"><span class="keyword">final</span> prefs = <span class="keyword">await</span> SharedPreferences.getInstance(); <span class="comment">// 获取实例</span></span><br><span class="line"><span class="keyword">await</span> prefs.setString(<span class="string">&#x27;token&#x27;</span>, <span class="built_in">DateTime</span>.now().toString()); <span class="comment">// 设置setInt、setString等</span></span><br><span class="line"><span class="keyword">final</span> token = prefs.getString(<span class="string">&#x27;token&#x27;</span>) ?? <span class="string">&#x27;&#x27;</span>; <span class="comment">// 获取getInt、getString等</span></span><br><span class="line">prefs.remove(<span class="string">&#x27;token&#x27;</span>) <span class="comment">// 移除</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Toast 提示</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用包： fluttertoast // 若报错重启应用</span></span><br><span class="line">_tips(msg) &#123;</span><br><span class="line">    Fluttertoast.showToast(</span><br><span class="line">      msg: msg,</span><br><span class="line">      gravity: ToastGravity.CENTER,</span><br><span class="line">      backgroundColor: Color.fromRGBO(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.7</span>)</span><br><span class="line">      <span class="comment">// toastLength: Toast.LENGTH_LONG,</span></span><br><span class="line">      <span class="comment">// timeInSecForIos: 1,</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>解决中文乱码</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;dart:convert&#x27;</span>;</span><br><span class="line">Utf8Decoder().convert(res.bodyBytes</span><br></pre></td></tr></table></figure></li>
+<li><p>ListView 水平滚动</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ListView(</span><br><span class="line">  scrollDirection: Axis.horizontal,  <span class="comment">// 滚动方向</span></span><br><span class="line">  children: []</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><p>下拉刷新上拉加载功能</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下拉刷新：</span></span><br><span class="line">RefreshIndicator，它是一个下拉刷新的widget，通过它我们可以实现列表的下拉刷新。</span><br><span class="line">RefreshIndicator(</span><br><span class="line">          onRefresh: _handleRefresh, <span class="comment">// 接收一个Future返回值函数： Future&lt;Null&gt; _handleRefresh() async &#123;&#125;</span></span><br><span class="line">          child: ListView(</span><br><span class="line">            children: _buildList(),</span><br><span class="line">          ),</span><br><span class="line">        )</span><br></pre></td></tr></table></figure></li>
+<li><p>上拉加载：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 步骤1、定义滚动controllor</span></span><br><span class="line">ScrollControllor _scrollControllor = ScrollControllor（）；</span><br><span class="line"><span class="comment">// 步骤2、初始化时添加监听事件</span></span><br><span class="line"><span class="meta">@override</span></span><br><span class="line">initState()&#123;</span><br><span class="line">  _scrollControllor.addListener(() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_scrollControllor.position.pixels == _scrollControllor.position.maxScrollExtent) &#123;</span><br><span class="line">       _loadData()  <span class="comment">// 上拉到底是执行</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 步骤3、给ListView设置controller </span></span><br><span class="line">ListView(</span><br><span class="line">  controllor: _scrollControllor,</span><br><span class="line">  children: []</span><br><span class="line">)</span><br><span class="line"><span class="comment">// 步骤4、销毁_scrollControllor</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@override</span></span><br><span class="line">dispose() &#123;</span><br><span class="line">  _scrollControllor.dispose();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ExpansionTile展开收起效果组件</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ExpansionTile（</span><br><span class="line">  title: Widget,</span><br><span class="line">  children: []</span><br><span class="line">）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GridView 网格布局</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GridView.count(</span><br><span class="line">  crossAxisCount: <span class="number">3</span>, <span class="comment">// 多少列</span></span><br><span class="line">  children: []</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制到粘贴板</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/services.dart&#x27;</span>;</span><br><span class="line">() <span class="keyword">async</span> &#123;</span><br><span class="line">   <span class="keyword">await</span> Clipboard.setData(ClipboardData(text: e[<span class="string">&#x27;domainUrl&#x27;</span>])); <span class="comment">// 复制操作</span></span><br><span class="line">   $tips(<span class="string">&#x27;复制成功&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>uri转义空格、&amp;、#等</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Uri</span>.encodeFull(<span class="built_in">String</span>)</span><br><span class="line"><span class="built_in">Uri</span>.encodeComponent(<span class="built_in">String</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>时间 DateTime</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">DateTime</span>.now().millisecondsSinceEpoch  <span class="comment">// 获取时间戳</span></span><br><span class="line">时间格式化包： intl</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:intl/intl.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> date = <span class="built_in">DateTime</span>.now();</span><br><span class="line"><span class="keyword">var</span> dd = DateFormat(<span class="string">&#x27;yyyy-MM-dd HH:mm:ss&#x27;</span>).format(date);</span><br></pre></td></tr></table></figure></li>
+<li><p>时间选择 showDatePicker 返回DateTime</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> startTime = <span class="keyword">await</span> showDatePicker(</span><br><span class="line">            context: context,</span><br><span class="line">            helpText: <span class="string">&#x27;开始时间&#x27;</span>,</span><br><span class="line">            initialDate: <span class="built_in">DateTime</span>.now(),</span><br><span class="line">            firstDate: <span class="built_in">DateTime</span>(<span class="number">2020</span>),</span><br><span class="line">            lastDate: <span class="built_in">DateTime</span>(<span class="number">2023</span>)</span><br><span class="line">          );</span><br></pre></td></tr></table></figure></li>
+<li><p>时间范围选择 showDateRangePicker返回DateRangerTime取start和end属性是DateTime类型</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dateRange = <span class="keyword">await</span> showDateRangePicker(</span><br><span class="line">            context: context,</span><br><span class="line">              helpText: <span class="string">&#x27;选择时间&#x27;</span>,</span><br><span class="line">              saveText: <span class="string">&#x27;确定&#x27;</span>,</span><br><span class="line">              firstDate: <span class="built_in">DateTime</span>(<span class="number">2020</span>),</span><br><span class="line">              lastDate: <span class="built_in">DateTime</span>(<span class="number">2023</span>)</span><br><span class="line">          );</span><br></pre></td></tr></table></figure></li>
+<li><p>toast、loading包： flutter_easyloading</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">EasyLoading.showToast(msg); <span class="comment">// 提示，showSuccess、showError、showInfo、showProg</span></span><br><span class="line">ress</span><br><span class="line">EasyLoading.<span class="keyword">show</span>(  <span class="comment">// 显示loading</span></span><br><span class="line">      status: <span class="string">&#x27;加载中...&#x27;</span></span><br><span class="line">    );</span><br><span class="line">EasyLoading.dismiss(); <span class="comment">// 关闭loading</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lading组件包： m_loading、flutter_spinkit</p>
+</li>
+<li><p>中文配置</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、</span></span><br><span class="line">dependencies:</span><br><span class="line">  flutter_localizations:</span><br><span class="line">    sdk: flutter</span><br><span class="line"><span class="comment">// 2、main.dart</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter_localizations/flutter_localizations.dart&#x27;</span>;</span><br><span class="line">MaterialApp</span><br><span class="line">  localizationsDelegates: [</span><br><span class="line">        GlobalMaterialLocalizations.delegate,</span><br><span class="line">        GlobalWidgetsLocalizations.delegate,</span><br><span class="line">        GlobalCupertinoLocalizations.delegate</span><br><span class="line">      ],</span><br><span class="line">      supportedLocales: [</span><br><span class="line">        <span class="keyword">const</span> Locale(<span class="string">&#x27;zh&#x27;</span>, <span class="string">&#x27;CH&#x27;</span>),</span><br><span class="line">        <span class="keyword">const</span> Locale(<span class="string">&#x27;en&#x27;</span>, <span class="string">&#x27;US&#x27;</span>),</span><br><span class="line">      ]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>手机语言设置成中文即可显示中文</p>
+</blockquote>
+</li>
+<li><p>页面缓存</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> $<span class="title">keepAlive</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> $keepAlive(&#123;</span><br><span class="line">    Key? key,</span><br><span class="line">    <span class="keyword">this</span>.keepAlive = <span class="keyword">true</span>,</span><br><span class="line">    <span class="keyword">required</span> <span class="keyword">this</span>.child,</span><br><span class="line">  &#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">bool</span> keepAlive;</span><br><span class="line">  <span class="keyword">final</span> Widget child;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _$keepAliveWrapperState createState() =&gt; _$keepAliveWrapperState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_</span>$<span class="title">keepAliveWrapperState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;$<span class="title">keepAlive</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="title">with</span> <span class="title">AutomaticKeepAliveClientMixin</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">super</span>.build(context);</span><br><span class="line">    <span class="keyword">return</span> widget.child;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> didUpdateWidget(<span class="keyword">covariant</span> $keepAlive oldWidget) &#123;</span><br><span class="line">    <span class="keyword">if</span>(oldWidget.keepAlive != widget.keepAlive) &#123;</span><br><span class="line">      <span class="comment">// keepAlive 状态需要更新，实现在 AutomaticKeepAliveClientMixin 中</span></span><br><span class="line">      updateKeepAlive();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">super</span>.didUpdateWidget(oldWidget);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="built_in">bool</span> <span class="keyword">get</span> wantKeepAlive =&gt; widget.keepAlive;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>屏幕适配 flutter_screenutil</p>
+</li>
+<li><p>table只加内部边框，用Container包一下可以给table加上borderRadius</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Table(</span><br><span class="line">  border: TableBorder.symmetric(</span><br><span class="line">     inside: BorderSide(color: boderColor),  <span class="comment">// 只加内部边框</span></span><br><span class="line">  ),</span><br><span class="line">  defaultVerticalAlignment: TableCellVerticalAlignment.middle,  <span class="comment">// 垂直方向对齐方式</span></span><br></pre></td></tr></table></figure></li>
+<li><p>drawer 侧边弹出框</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、创建一个globle key 用于打开drawer</span></span><br><span class="line"><span class="keyword">final</span> key = GlobalKey&lt;ScaffoldState&gt;();</span><br><span class="line"><span class="comment">// 2、添加drawer</span></span><br><span class="line">Scaffold</span><br><span class="line">  key: key,</span><br><span class="line">  drawer: Drawer(child： child)  <span class="comment">// 左边弹出</span></span><br><span class="line">  endDrawer: Drawer(child： child)  <span class="comment">// 右边弹出</span></span><br><span class="line"><span class="comment">// 3、</span></span><br><span class="line"></span><br><span class="line">打开： key.currentState?.openDrawer() / key.currentState?.openEndDrawer()</span><br><span class="line">关闭： Navigator.pop(context)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表单</p>
+</li>
+<li><p>多选框</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Checkbox</span><br><span class="line">  value: value,</span><br><span class="line">  onChange: (val) &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>下拉框</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DropdownButton</span><br><span class="line">  icon: Icon(Icons.drop_down),</span><br><span class="line">  isExpanded: <span class="keyword">true</span>,  <span class="comment">// 图标两边对齐</span></span><br><span class="line">  underline: SizedBox(),  <span class="comment">// 去掉下划线</span></span><br><span class="line">  hint: Text(<span class="string">&#x27;请选择&#x27;</span>),  <span class="comment">// placeholder</span></span><br><span class="line">  items： Widget</span><br><span class="line">  onChanged：(val)&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>输入框</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TextFormField</span><br><span class="line">  onSaved: (value)&#123;&#125;,  <span class="comment">// 调用formKey的currentState.save()时onSaved会被调用，可用于更改数据</span></span><br><span class="line">  maxLines: maxLines,  <span class="comment">// 设置多行可变成texteara</span></span><br><span class="line">  textAlign: TextAlign.right,  <span class="comment">// 对齐方式</span></span><br><span class="line">  decoration: InputDecoration(</span><br><span class="line">    border: InputBorder.none,  <span class="comment">// 去掉边框</span></span><br><span class="line">    hintStyle: hintStyle ?? TextStyle(color: ColorUtil.color(<span class="string">&#x27;#DADBDE&#x27;</span>)),  <span class="comment">// placeholder 样式</span></span><br><span class="line">    hintText： hintText  <span class="comment">// hintText</span></span><br></pre></td></tr></table></figure></li>
+<li><p>flutter_picker 选择器</p>
+</li>
+<li><p>base46图片</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.memory(<span class="keyword">const</span> Base64Decoder().convert(vertifyCode))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dart 定时器</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;dart:async&#x27;</span>;</span><br><span class="line"><span class="keyword">late</span> Timer _timer;</span><br><span class="line">_timer = Timer.periodic(<span class="keyword">const</span> <span class="built_in">Duration</span>(milliseconds: <span class="number">1000</span>), (timer) &#123;  <span class="comment">// 每秒执行一次</span></span><br><span class="line">  timer.cancel(); <span class="comment">// 内部取消定时器</span></span><br><span class="line">&#125;)</span><br><span class="line">_timer.cancel(); <span class="comment">// 外部取消</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "http://example.com/2022/04/21/flutter/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "http://example.com/2022/04/21/flutter/";
+            const title         = "「flutter」";
+            const excerpt       = `基础入门dart：类型： num、int、double、String、void、dynamic、set、list、map（Numbers、Strings、Booleans、Lists、Sets、Maps、Runes、Symbels、n...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/dart/" rel="tag">dart</a>, <a class="tag-none-link" href="/tags/flutter/" rel="tag">flutter</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2022-04-21T09:33:48.823Z" itemprop="dateModified">最后编辑：2022-04-21</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 快速搭建博客" href="/2022/04/21/buildBlog/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">分享vue、flutter、ract、node等干货，做个咸鱼前端人</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                2
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                4
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/flutter/">flutter</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%99%E7%A8%8B%E6%96%87%E6%A1%A3/">教程文档</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/dart/" style="font-size: 0.8em;">dart</a> <a href="/tags/flutter/" style="font-size: 0.8em;">flutter</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 0.6em;">快速搭建博客</a> <a href="/tags/%E6%95%99%E7%A8%8B%E6%96%87%E6%A1%A3/" style="font-size: 0.6em;">教程文档</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2022/04/21/flutterProblem/"><i class="fa  fa-book"></i> flutter填坑记</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/04/21/buildBlog/"><i class="fa  fa-book"></i> 快速搭建博客</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/04/21/flutter/"><i class="fa  fa-book"></i> flutter</a>
+            
+          
+        
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2022 Lzccheng 版权所有.</li>
+                            <!-- <li>本站已运行<span id="span_dt">Loading...</span></li> -->
+                        </div>
+                        <!-- <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by Lzccheng.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div> -->
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://unpkg.com/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://unpkg.com/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
