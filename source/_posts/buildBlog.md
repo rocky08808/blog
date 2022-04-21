@@ -29,6 +29,10 @@ hexo new [layout] <title>
 ```
 即可生成新文章，可在source目录下找到对应title名字的md文件，自行编辑即可，想了解更详细可访问文档[https://hexo.io](https://hexo.io)
 
+4、把博客放到GitPage
+ 1）、修改_config.yml的url为gitpage的url
+ 2）、把img的url改成相对路径
+
 md文件顶部基本属性：
 ```bash
 ---
