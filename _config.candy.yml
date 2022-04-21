@@ -12,8 +12,8 @@ check_update: true
 # 自定义样式
 customStyles:
   images: # 图片相关设置
-    banner: /images/banner.webp # 站点横幅
-    background: /images/bg.webp # 站点背景
+    banner: ./images/banner.webp # 站点横幅
+    background: ./images/bg.webp # 站点背景
 
 # Index 首页配置
 index:
@@ -144,7 +144,7 @@ widgets:
 - category
 - tagcloud
 - posts
-avatarUri: /images/avatar.webp
+avatarUri: ./images/avatar.webp
 mobile_toc: 
   hide: false
   hide_id: false
@@ -171,8 +171,8 @@ jsconfig:
     createTime: "2018/05/06 17:03:12"
     donateBtn: "支持我~"
     scanNotice: "扫一扫，好不好？"
-    qr_alipay: "/images/alipayqr.webp"
-    qr_wechat: "/images/wechatpayqr.webp"
+    qr_alipay: "./images/alipayqr.webp"
+    qr_wechat: "./images/wechatpayqr.webp"
     siteLeaveEvent: false
     leaveTitle: "{{{(>_<)}}}哦哟，崩溃啦~"
     returnTitle: "(*´∇｀*)欸，又好啦~"
