@@ -27,8 +27,8 @@ menu:
   archives: /archives/
   # friends: /friends/
   # sites:
-  #   submenu: true
-  #   author: https://github.com/rocky08808
+    # submenu: true
+    # author: https://github.com/rocky08808
   #   project: https://github.com/Candinya/Kratos-Rebirth
 
 label:
@@ -37,7 +37,7 @@ label:
   friends: <i class="fa fa-paw"></i>好伙伴
   sites:
     submenu: <i class="fa fa-link"></i>链接
-    author: 作者博客
+    author: 作者GitHub
     project: 项目链接
 
 # Footer 页脚配置
