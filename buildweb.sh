@@ -1,3 +1,5 @@
+echo '=== start ==='
+
 echo '=== clean ==='
 hexo clean
 echo '=== clean === done'
