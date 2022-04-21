@@ -5,4 +5,4 @@ echo '=== remove docs === done'
 mkdir docs
 echo '=== create docs === done'
 cp -r public/* docs/
-echo '=== copy to docs === done'
+echo '=== public copy to docs === done'
