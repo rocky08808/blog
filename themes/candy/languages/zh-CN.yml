@@ -13,7 +13,7 @@ prev: 上一页
 next: 下一页
 comment: 留言
 archive: 文章归档
-archive_count: 当前共有 %d 篇文章 (゜-゜)つロ 干杯~
+archive_count: 当前共有 %d 篇文章 
 page: 第 %d 页
 recent_posts: 最新文章
 newer: 上一篇
@@ -34,5 +34,5 @@ use_cc4_license: 本作品采用 <a rel="license nofollow" target="_blank" href=
 toc: 文章目录
 words: 字
 post: 文章
-tags_count: 当前共有 %d 个标签 (゜-゜)つロ 干杯~
-categories_count: 当前共有 %d 种分类 (゜-゜)つロ 干杯~
+tags_count: 当前共有 %d 个标签 
+categories_count: 当前共有 %d 种分类 
