@@ -144,7 +144,7 @@ widgets:
 - category
 - tagcloud
 - posts
-avatarUri: ./images/avatar.webp
+avatarUri: /blog/images/avatar.webp
 mobile_toc: 
   hide: false
   hide_id: false
@@ -166,13 +166,13 @@ jsconfig:
     pic:
       CDN: true # 表示使用 CDN 加载图片
       random_amount: 20 # 表示从1~20
-      filename: "images/thumb/thumb_{no}.webp" # 相对于主题根目录，表示文件名的格式, {no} 用以指代随机的编号。
+      filename: "/blog/images/thumb/thumb_{no}.webp" # 相对于主题根目录，表示文件名的格式, {no} 用以指代随机的编号。
                                               # 如果包含 // 表示使用指定域名的绝对路径（例如第三方图床服务等），那么会忽略 CDN 选项
     createTime: "2018/05/06 17:03:12"
     donateBtn: "支持我~"
     scanNotice: "扫一扫，好不好？"
-    qr_alipay: "./images/alipayqr.webp"
-    qr_wechat: "./images/wechatpayqr.webp"
+    qr_alipay: "/blog/images/alipayqr.webp"
+    qr_wechat: "/blog/images/wechatpayqr.webp"
     siteLeaveEvent: false
     leaveTitle: "{{{(>_<)}}}哦哟，崩溃啦~"
     returnTitle: "(*´∇｀*)欸，又好啦~"
@@ -197,14 +197,14 @@ friends:
   list:
   - name: "猫猫①号"
     bio: "喵~"
-    avatar: "../images/avatar.webp"
+    avatar: "/blog/images/avatar.webp"
     link: "https://candinya.com"
   - name: "猫猫②号"
     bio: "喵喵~"
-    avatar: "../images/avatar.webp"
+    avatar: "/blog/images/avatar.webp"
     link: "https://candinya.com"
   - name: "猫猫⑨号"
     bio: "咪啪~"
-    avatar: "../images/avatar.webp"
+    avatar: "/blog/images/avatar.webp"
     link: "https://candinya.com"
   verify: true # 验证每个友链的可访问性，炸了会有提示
