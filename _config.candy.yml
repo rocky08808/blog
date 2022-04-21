@@ -127,7 +127,7 @@ livere:
 
 # APlayer 左下角音乐播放器
 aplayer:
-  enabled: true
+  enabled: false
   playlist: 
   meting:
     server: netease
