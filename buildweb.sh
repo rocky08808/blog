@@ -13,3 +13,5 @@ git commit -am 'build'
 echo '=== git commit === done'
 git push origin master
 echo '=== git push === done'
+
+echo '=== finished ==='
