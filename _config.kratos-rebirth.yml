@@ -25,11 +25,11 @@ index:
 menu:
   index: /
   archives: /archives/
-  friends: /friends/
-  sites:
-    submenu: true
-    author: https://candinya.com
-    project: https://github.com/Candinya/Kratos-Rebirth
+  # friends: /friends/
+  # sites:
+  #   submenu: true
+  #   author: https://github.com/rocky08808
+  #   project: https://github.com/Candinya/Kratos-Rebirth
 
 label:
   index: <i class="fa fa-home"></i>首页
@@ -45,14 +45,14 @@ group_link:
 contact:
   weibo: 
   mail: 
-  telegram: CandyUnion
+  telegram:
   twitter: 
   facebook: 
   linkedin: 
   fediverse:
-    instance: nya.one
-    username: Candinya
-  github: Candinya
+    instance:
+    username:
+  github:
   rss:
 timenotice: 本站已运行
 icp: 
