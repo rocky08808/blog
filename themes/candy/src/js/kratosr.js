@@ -158,7 +158,7 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
                     break;
                 case 'jsdelivr':
                 default:
-                    prefix = "//cdn.jsdelivr.net/npm/kratos-rebirth@latest/source/";
+                    prefix = "//unpkg.com/kratos-rebirth@latest/source/";
                     break;
             }
         }
