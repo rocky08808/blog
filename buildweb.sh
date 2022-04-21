@@ -11,7 +11,9 @@ echo '=== build === done'
 echo '=== git push ==='
 git add .
 echo '=== git add === done'
-git commit -am 'build'
+time=$(date "+%Y%m%d-%H%M%S")
+echo '=== time ${time} ==='
+git commit -am 'build${time}'
 echo '=== git commit === done'
 git push origin master
 echo '=== git push === done'
