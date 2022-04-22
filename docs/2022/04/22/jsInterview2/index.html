@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="">
+  <title>js 进阶问题 | Lzccheng</title>
+  <meta name="author" content="Lzccheng" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="javascript, 干货" />
+  
+  <meta name="description" content="1、html渲染过程 参考回答: 浏览器渲染页面是一个从上至下的过程，当拿到html以后首先会生成dom树，加载解析css构建cssom树，解析css的时候不会阻塞进程，我们通常会把首屏样式放到head里面，然后加载执行js，在js里面可能会有动态创建修改dom的逻辑，浏览器为了优化整个渲染过程，会在解析到js的时候阻塞整个进程，我们通常把js放到body后面来优化首屏的加载速度，当dom以及cs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js 进阶问题">
+<meta property="og:url" content="https://rocky08808.github.io/blog/2022/04/22/jsInterview2/index.html">
+<meta property="og:site_name" content="Lzccheng">
+<meta property="og:description" content="1、html渲染过程 参考回答: 浏览器渲染页面是一个从上至下的过程，当拿到html以后首先会生成dom树，加载解析css构建cssom树，解析css的时候不会阻塞进程，我们通常会把首屏样式放到head里面，然后加载执行js，在js里面可能会有动态创建修改dom的逻辑，浏览器为了优化整个渲染过程，会在解析到js的时候阻塞整个进程，我们通常把js放到body后面来优化首屏的加载速度，当dom以及cs">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-22T04:17:22.000Z">
+<meta property="article:modified_time" content="2022-04-22T04:19:10.565Z">
+<meta property="article:author" content="Lzccheng">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="干货">
+<meta name="twitter:card" content="summary">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/blog/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="darkmode-css" href="/blog/css/kr-color-dark.min.css" type="text/css" media="(prefers-color-scheme: dark)">
+    <script src="/blog/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/blog/css/highlight/night-eighties.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://unpkg.com/nprogress@0.2.0/nprogress.css" type="text/css" media="all">
+  
+  
+  
+  
+    <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="https://unpkg.com/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/blog/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/blog/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/blog/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/blog/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/blog/">Lzccheng</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/blog/">
+                        <h2>Lzccheng</h2> <br />
+                        <span>分享vue、flutter、ract、node等干货，做个咸鱼前端人</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://rocky08808.github.io/blog/2022/04/22/jsInterview2/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">js 进阶问题</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2022-04-22T04:17:22.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-04-22</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">Lzccheng</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~14.76K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1650601150565"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h5 id="1、html渲染过程"><a href="#1、html渲染过程" class="headerlink" title="1、html渲染过程"></a>1、html渲染过程</h5><blockquote>
+<p>参考回答: 浏览器渲染页面是一个从上至下的过程，当拿到html以后首先会生成dom树，加载解析css构建cssom树，解析css的时候不会阻塞进程，我们通常会把首屏样式放到head里面，然后加载执行js，在js里面可能会有动态创建修改dom的逻辑，浏览器为了优化整个渲染过程，会在解析到js的时候阻塞整个进程，我们通常把js放到body后面来优化首屏的加载速度，当dom以及cssom都构建完成后会生成渲染树，再根据渲染树将dom树上的节点布局到屏幕上的正确位置，最后遍历绘制的所有节点，为其添加对应的样式<br> 延伸理解<br>重绘：改变dom的外观属性，如背景色，outline等<br>重排:  改变dom的结构，几何属性等<br>为了减少浏览器的重排重绘，我们应该将多次改变样式的操作合并成一次操作</p>
+</blockquote>
+<h5 id="2、HTTPS和HTTP的区别及优缺点"><a href="#2、HTTPS和HTTP的区别及优缺点" class="headerlink" title="2、HTTPS和HTTP的区别及优缺点"></a>2、HTTPS和HTTP的区别及优缺点</h5><blockquote>
+<p>参考回答:<br>1.http是超文本传输协议,信息是明文传输, https是具有安全性的ssl加密传输协议<br>2.两者采用完全不同的连接方式，http连接是无状态的, https是由ssl＋http协议构建的可进行加密传输，身份认证的网络协议<br>3.两者用的端口也不一样，前者80后者443<br>4.https 需要证书<br>优点<br>https在seo以及安全性方面要高于http<br>缺点<br>https加载时间较长，证书收费</p>
+</blockquote>
+<h5 id="3、js中this"><a href="#3、js中this" class="headerlink" title="3、js中this"></a>3、js中this</h5><blockquote>
+<p>参考回答:<br>js中this的指向总是指向一个对象，而具体指向哪个对象是在运行时基于函数的执行环境动态绑定的， 而非函数被声明时的环境<br>具体到实际应用中，this 的指向大致可以分为以下几种<br>*作为对象的方法调用指向当前对象<br>*作为普通函数调用指向全局window<br>*构造函数调用指向返回的对象<br>*call,apply 调用指向其第一个参数</p>
+</blockquote>
+<h5 id="4、怎么理解js中是原型链-如何实现继承"><a href="#4、怎么理解js中是原型链-如何实现继承" class="headerlink" title="4、怎么理解js中是原型链? 如何实现继承?"></a>4、怎么理解js中是原型链? 如何实现继承?</h5><blockquote>
+<p>参考回答:<br>每个构造函数都有一个原型对象<br>每个原型对象都包含一个指向构造函数的指针<br>每个实例都包含一个指向原型对象的指针<br>查找方式是一层层向上查找直至顶层Object.prototype<br>实现继承的方式常用的有:<br>原型链继承<br>借用构造函数(call,apply)<br>组合继承(原型链＋构造函数)<br>原型式继承<br>寄生式组合式继承<br>延伸理解:<br>优缺点?<br>每一种继承的方式都有自己的优缺点<br>组合继承的特点是会调用构造函数两次,<br>都是将多种继承方式组合到一起相辅相成.<br>new 运算符具体干了什么?<br>创建一个空的对象<br>将空的对象的__proto__成员指向构造函数的prototype成员对象<br>调用构造函数将this指向前面创建的对象</p>
+</blockquote>
+<h5 id="5、怎么理解js中的内存泄漏"><a href="#5、怎么理解js中的内存泄漏" class="headerlink" title="5、怎么理解js中的内存泄漏?"></a>5、怎么理解js中的内存泄漏?</h5><blockquote>
+<p>参考回答:<br>内存泄漏的定义为当程序不再需要的内存，由于某种原因其不会返回到操作系统或可用内存池，内存泄漏会导致一系列问题，比如: 运行缓慢，崩溃，高延迟等<br>js中常见的内存泄露:<br>意外的全局变量<br>遗忘的计时器或回调函数<br>脱离文档的DOM引用<br>闭包</p>
+</blockquote>
+<h5 id="6、如何理解浏览器的跨域问题？常用的解决方式有哪些？"><a href="#6、如何理解浏览器的跨域问题？常用的解决方式有哪些？" class="headerlink" title="6、如何理解浏览器的跨域问题？常用的解决方式有哪些？"></a>6、如何理解浏览器的跨域问题？常用的解决方式有哪些？</h5><blockquote>
+<p>参考回答:<br>浏览器的同源策略会导致跨域，这里同源策略又分为以下两种 ：<br>DOM同源策略：禁止对不同源页面DOM进行操作。这里主要场景是iframe跨域的情况，不同域名的iframe是限制互相访问的。<br>XmlHttpRequest同源策略：禁止使用XHR对象向不同源的服务器地址发起HTTP请求。只要协议、域名、端口有任何一个不同，都被当作是不同的域，之间的请求就是跨域操作<br>注：协议、域名、端口有任何一个不同，都视为不同的域<br>常用的解决方式:<br>1.CORS(Cross-origin resource sharing) 跨域资源共享<br>注: 这种方式如果想要携带cookie需要xhr设置withCredentials为true, 服务端 Access-Control-Allow-Credentials:true<br>2.jsonp实现跨域(动态创建script,利用src属性进行跨域)<br>3.服务器代理(浏览器有跨域限制，服务端没有)<br>4.document.domain<br>5.window.name<br>6.hash传值<br>7.possMessage</p>
+</blockquote>
+<h5 id="7、函数防抖，函数节流的基本概念以及工作中实际使用到的场景？实现的思路是？"><a href="#7、函数防抖，函数节流的基本概念以及工作中实际使用到的场景？实现的思路是？" class="headerlink" title="7、函数防抖，函数节流的基本概念以及工作中实际使用到的场景？实现的思路是？"></a>7、函数防抖，函数节流的基本概念以及工作中实际使用到的场景？实现的思路是？</h5><blockquote>
+<p>参考回答:<br>函数防抖(debounce)<br>基本概念: 在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。<br>举例理解: 我们用手指一直按住一个弹簧，它将不会马上弹起直到你松手为止<br>使用场景:<br>按钮重复点击<br>输入框连续输入<br>判断scroll是否滑到底部<br>简单实现:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">debounce</span> = (<span class="params">fn,delay</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> ctx = <span class="variable language_">this</span>, args = <span class="variable language_">arguments</span></span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">        timer = <span class="built_in">setTimeout</span>( <span class="function">()=&gt;</span> &#123;</span><br><span class="line">          fn.<span class="title function_">apply</span>(ctx,args)</span><br><span class="line">        &#125;, delay)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>函数节流(throttle)<br>基本概念: 在规定的时间范围内相同的操作触发多次只执行一次<br>DOM拖拽<br>Canvas画笔<br>窗口resize<br>简单实现:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">throttle</span> = (<span class="params">fn,gapTime = <span class="number">100</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">let</span> start_time = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> ctx = <span class="variable language_">this</span>, args = <span class="variable language_">arguments</span>,</span><br><span class="line">        current_time = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()</span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">        <span class="keyword">if</span>(curr_time - start_time &gt;= <span class="title function_">gapTime</span>())&#123;</span><br><span class="line">          fn.<span class="title function_">apply</span>(ctx,args)</span><br><span class="line">          start_time = current_time</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          timer = <span class="built_in">setTimeout</span>( <span class="function">()=&gt;</span> &#123;</span><br><span class="line">          fn.<span class="title function_">apply</span>(ctx,args)</span><br><span class="line">          &#125;, gapTime)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="8、js中的eventloop机制？"><a href="#8、js中的eventloop机制？" class="headerlink" title="8、js中的eventloop机制？"></a>8、js中的eventloop机制？</h5><blockquote>
+<p>参考回答:<br>首先javascript是单线程机制，就是指当我们在执行一个任务的时候，其它的事情都得等待他执行完毕<br>在js中所有任务分为两种, 同步任务及异步任务<br>执行栈执行主线程任务，当有操作dom，ajax交互，使用定时器异步操作的时候，这些任务会被移入到 callback queue 任务队列中 当主线程任务执行完毕为空时，会读取callback queue队列中的函数，进入主线程执行 上述过程会不断重复，也就是常说的Event Loop(事件循环)<br>在一个事件循环中,异步任务返回结果后会被扔进一个任务列队中，根据异步事件上的类型，这个事件会被放到对应的宏任务或者微任务列队中去， 当执行栈为空的时候，主线程会先查看微任务中的事件列队，如果微任务不是空先依次执行微任务，如果是空的再去宏任务列队中取出一个事件并把对应的回调加入到当前执行栈，如此反复，进入循环<br>下面用一道题来加深印象</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Promise</span>( <span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>)</span><br><span class="line">&#125;).<span class="title function_">then</span>( <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(val);</span><br><span class="line">&#125;)</span><br><span class="line">输出的结果是<span class="number">2</span>,<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h5 id="9、web安全攻击手段有哪些？以及如何防范"><a href="#9、web安全攻击手段有哪些？以及如何防范" class="headerlink" title="9、web安全攻击手段有哪些？以及如何防范"></a>9、web安全攻击手段有哪些？以及如何防范</h5><blockquote>
+<p>常见的有xss, csrf, sql注入<br>xss(cross site scripting) 跨站脚本攻击<br>定义: 指攻击者在网页嵌入脚本，用户浏览网页触发恶意脚本执行<br>XSS攻击分为3类：存储型（持久型）、反射型（非持久型）、基于DOM<br>如何防范:<br>设置HttpOnly以避免cookie劫持的危险<br>过滤，对诸如&lt;script&gt;、&lt;img&gt;、&lt;a&gt;等标签进行过滤<br>编码，像一些常见的符号，如&lt;&gt;在输入的时候要对其进行转换编码<br>限制，对于一些可以预期的输入可以通过限制长度强制截断来进行防御<br>csrf(cross site request forgery) 跨站请求伪造<br>定义: 是一种劫持受信任用户向服务器发送非预期请求的攻击方式<br>如何防范:<br>验证 HTTP Referer 字段<br>请求地址中添加 token 并验证<br>HTTP 头中自定义属性并验证<br>sql注入(SQL injection)<br>定义: 在未授权情况下，非法访问数据库信息<br>如何防范:<br>杜绝用户提交的参数入库并且执行<br>在代码层，不准出现sql语句<br>在web输入参数处，对所有的参数做sql转义<br>上线测试，需要使用sql自动注入工具进行所有的页面sql注入测试</p>
+</blockquote>
+<h5 id="10、说说你对前端模块化的理解。"><a href="#10、说说你对前端模块化的理解。" class="headerlink" title="10、说说你对前端模块化的理解。"></a>10、说说你对前端模块化的理解。</h5><blockquote>
+<p>模块的定义:<br>可以理解成实现特定功能的相互独立的一组方法<br>为什么要使用模块化:<br>可维护性<br>命名空间<br>可复用性<br>模块化规范<br>CommonJS<br>AMD<br>UMD<br>CMD<br>Module(es6)<br>CommonJS<br>CommonJS 扩展了JavaScript声明模块的API,<br>通过CommonJS，每个JS文件独立地存储它模块的内容（就像一个被括起来的闭包一样）。在这种作用域中，我们通过 module.exports 语句来导出对象为模块，再通过 require 语句来引入<br>如：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">myModule</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">hello</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;hello!&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = myModule;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>AMD （Asynchronous Module Definition）<br>特点:<br>提倡依赖前置，在定义模块的时候就要声明其依赖的模块<br>如：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="variable language_">module</span>], callback);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CMD (Common Module Definition)<br>CMD规范是国内SeaJS的推广过程中产生的<br>提倡就近依赖（按需加载），在用到某个模块的时候再去require</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">define</span>(<span class="keyword">function</span> (<span class="params"><span class="built_in">require</span>, <span class="built_in">exports</span>, <span class="variable language_">module</span></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> one = <span class="built_in">require</span>(<span class="string">&#x27;./one&#x27;</span>)</span><br><span class="line">  one.<span class="title function_">do</span>()</span><br><span class="line"><span class="comment">// 就近依赖，按需加载</span></span><br><span class="line">  <span class="keyword">var</span>  two = <span class="built_in">require</span>(<span class="string">&#x27;./two&#x27;</span>)</span><br><span class="line">  two.<span class="title function_">do</span>() </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>UMD (Universal Module Definition)<br>AMD和CommonJS的结合,跨平台的解决方案,UMD先判断是否支持Node.js的模块（exports）是否存在，存在则使用Node.js模块模式。在判断是否支持AMD（define是否存在），存在则使用AMD方式加载模块<br>如：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span> (<span class="params"><span class="variable language_">window</span>, factory</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">exports</span> === <span class="string">&#x27;object&#x27;</span>) &#123;</span><br><span class="line">        <span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title function_">factory</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> define === <span class="string">&#x27;function&#x27;</span> &amp;&amp; define.<span class="property">amd</span>) &#123;</span><br><span class="line">        <span class="title function_">define</span>(factory);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">eventUtil</span> = <span class="title function_">factory</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(<span class="variable language_">this</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//module ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Module<br>原生ＪＳ(es6)解决方案<br>如:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> myModule</span><br><span class="line"><span class="keyword">import</span> myModule <span class="keyword">from</span> <span class="string">&#x27;./myModule&#x27;</span></span><br></pre></td></tr></table></figure>
+<h5 id="11、Call，apply，bind的使用与区别，如何实现一个bind？"><a href="#11、Call，apply，bind的使用与区别，如何实现一个bind？" class="headerlink" title="11、Call，apply，bind的使用与区别，如何实现一个bind？"></a>11、Call，apply，bind的使用与区别，如何实现一个bind？</h5><blockquote>
+<p>相同点:<br>都是使用于方法借用及明确this指向场景<br>第一个参数都是this要指向的对象<br>都可以利用后续参数传参<br>不同点:<br>参数传递方式不同<br>call,apply是立即调用,bind是动态调用<br>基本使用:<br>Array.prototype.slice.call(obj,0,1,2)<br>Array.prototype.slice.apply(obj,[0,1,2])<br>Array.prototype.slice.bind(obj)(0,1,2)<br>从上面的例子可以看出来call,apply 使用上几乎保持一致，而bind实际上是返回了一个函数<br>简易bind实现</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">bind</span> = <span class="keyword">function</span>(<span class="params">context</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> _this = <span class="variable language_">this</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        _this.<span class="title function_">apply</span>(context, <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">call</span>(<span class="variable language_">arguments</span>))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的bind只实现了方法的作用域绑定，参数已经固定，如果想要动态的参数我们得改写一下</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">bind</span> = <span class="keyword">function</span>(<span class="params">context</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> _this = <span class="variable language_">this</span></span><br><span class="line">    <span class="keyword">const</span> argus = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">apply</span>(<span class="variable language_">arguments</span>,[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        _this.<span class="title function_">apply</span>(context, argus.<span class="title function_">concat</span>(<span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">call</span>(<span class="variable language_">arguments</span>)))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="12、前端的缓存有哪些？都适用什么场景？区别是什么？"><a href="#12、前端的缓存有哪些？都适用什么场景？区别是什么？" class="headerlink" title="12、前端的缓存有哪些？都适用什么场景？区别是什么？"></a>12、前端的缓存有哪些？都适用什么场景？区别是什么？</h5><blockquote>
+<p>参考回答<br>前端缓存分为两部分:<br>http 缓存<br>浏览器缓存<br>http 缓存<br>强缓存<br>强缓存主要是采用响应头中的Cache-Control和Expires两个字段进行控制的<br>Cache-Control 值理解:<br>max-age 指定设置缓存最大的有效时间(单位为s)<br>public 指定响应会被缓存，并且在多用户间共享<br>private 响应只作为私有的缓存，不能在用户间共享<br>no-cache 指定不缓存响应，表明资源不进行缓存<br>no-store 绝对禁止缓存<br>Expires 理解:<br>缓存过期时间，用来指定资源到期的时间，是服务器端的具体的时间点, 需要和Last-modified结合使用<br>Last-modified 理解<br>服务器端文件的最后修改时间，需要和cache-control共同使用，是检查服务器端资源是否更新的一种方式<br>ETag 理解<br>根据实体内容生成一段hash字符串，标识资源的状态，由服务端产生。浏览器会将这串字符串传回服务器，验证资源是否已经修改<br>协商缓存(304)<br>协商缓存是指当强缓存机制如果检测到缓存失效，就需要进行服务器再验证<br>浏览器缓存<br>Cookie<br>LocalStorage<br>SessionStorage<br>Service Worker<br>Cookie<br>Cookie主要用于用户信息的存储, 容量为4KB<br>LocalStorage<br>LocalStorage的数据将一直保存在浏览器内，直到用户清除浏览器缓存数据为止, 容量为5MB<br>SessionStorage<br>SessionStorage的其他属性同LocalStorage, 不同是的当页面关闭时会随之清除<br>Service Worker<br>主要是为了提高web app的用户体验，可以实现离线应用消息推送等等一系列的功能, 可以看做是一个独立于浏览器的Javascript代理脚本, 在离线状态下也能提供基本的功能。 出于安全性的考虑，Service Worker 只能在https协议下使用</p>
+</blockquote>
+<h5 id="13、Http常见状态码及其含义"><a href="#13、Http常见状态码及其含义" class="headerlink" title="13、Http常见状态码及其含义?"></a>13、Http常见状态码及其含义?</h5><blockquote>
+<p>http状态码分为5个大类<br>1** 信息相关<br>2** 请求成功<br>3** 重定向相关<br>4** 客户端错误相关，或无法完成请求<br>5** 服务端错误相关<br>301—永久移动。被请求的资源已被永久移动位置；<br>302—请求的资源现在临时从不同的 URI 响应请求；<br>305—使用代理。被请求的资源必须通过指定的代理才能被访问；<br>307—临时跳转。被请求的资源在临时从不同的URL响应请求；<br>400—错误请求；<br>402—需要付款。该状态码是为了将来可能的需求而预留的，用于一些数字货币或者是微支付；<br>403—禁止访问。服务器已经理解请求，但是拒绝执行它；<br>404—找不到对象。请求失败，资源不存在；<br>406—不可接受的。请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体；<br>408—请求超时；<br>409—冲突。由于和被请求的资源的当前状态之间存在冲突，请求无法完成；<br>410—遗失的。被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址；<br>413—响应实体太大。服务器拒绝处理当前请求，请求超过服务器所能处理和允许的最大值。<br>417—期望失败。在请求头 Expect 中指定的预期内容无法被服务器满足；<br>418—我是一个茶壶。超文本咖啡罐控制协议，但是并没有被实际的HTTP服务器实现；<br>420—方法失效。<br>422—不可处理的实体。请求格式正确，但是由于含有语义错误，无法响应；<br>500—服务器内部错误。服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理</p>
+</blockquote>
+<h5 id="14、前端优化手段有哪些？"><a href="#14、前端优化手段有哪些？" class="headerlink" title="14、前端优化手段有哪些？"></a>14、前端优化手段有哪些？</h5><blockquote>
+<p>静态资源合并压缩(js,css, images)<br>请求数量优化<br>Gzip压缩<br>带宽优化<br>CDN<br>就近节点，减少DNS查找<br>按需加载<br>lazyload<br>减少请求<br>骨架屏<br>优化白屏<br>web缓存<br>缓存ajax数据<br>减少重绘和重排<br>批量更新ＤＯＭ样式<br>页面结构<br>将样式表放在顶部，将脚本放在底部，尽早刷新文档的输出</p>
+</blockquote>
+<h5 id="15、元素水平垂直居中的方式有哪些"><a href="#15、元素水平垂直居中的方式有哪些" class="headerlink" title="15、元素水平垂直居中的方式有哪些"></a>15、元素水平垂直居中的方式有哪些</h5><blockquote>
+<p>absolute加margin方案<br>fixed 加 margin 方案<br>display:table 方案<br>行内元素line-height方案<br>flex 弹性布局方案<br>transform 未知元素宽高解决方案</p>
+</blockquote>
+<h6 id="1-、absolute加margin方案"><a href="#1-、absolute加margin方案" class="headerlink" title="(1)、absolute加margin方案:"></a>(1)、absolute加margin方案:</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">        position: absolute;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        left: 50%;</span><br><span class="line">        top: 50%:</span><br><span class="line">        margin-top: -50px;</span><br><span class="line">        margin-left: -50px;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h6 id="2-、fixed-加-margin-方案"><a href="#2-、fixed-加-margin-方案" class="headerlink" title="(2)、fixed 加 margin 方案"></a>(2)、fixed 加 margin 方案</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">       position: fixed;</span><br><span class="line">       width: 100px;</span><br><span class="line">       height: 100px;</span><br><span class="line">       top: 0;</span><br><span class="line">       right:0;</span><br><span class="line">       left: 0;</span><br><span class="line">       bottom: 0;</span><br><span class="line">       margin: auto;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h6 id="3-、display-table-方案"><a href="#3-、display-table-方案" class="headerlink" title="(3)、display:table 方案"></a>(3)、display:table 方案</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">        display: table-cell;</span><br><span class="line">        vertical-align: middle;</span><br><span class="line">        text-align: center;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h6 id="4-、行内元素line-height方案"><a href="#4-、行内元素line-height方案" class="headerlink" title="(4)、行内元素line-height方案"></a>(4)、行内元素line-height方案</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">        text-align: center;</span><br><span class="line">        line-height: 100px;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h6 id="5-、flex-弹性布局方案"><a href="#5-、flex-弹性布局方案" class="headerlink" title="(5)、flex 弹性布局方案"></a>(5)、flex 弹性布局方案</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">       display: flex;</span><br><span class="line">       align-items: center;</span><br><span class="line">       justify-content:center</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h6 id="6-、transform-未知元素宽高解决方案"><a href="#6-、transform-未知元素宽高解决方案" class="headerlink" title="(6)、transform 未知元素宽高解决方案"></a>(6)、transform 未知元素宽高解决方案</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">       position: absolute;</span><br><span class="line">       top: 50%;</span><br><span class="line">       left: 50%;</span><br><span class="line">       transform: translate(-50%, -50%)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="16、var-let-const的区别及使用场景"><a href="#16、var-let-const的区别及使用场景" class="headerlink" title="16、var let const的区别及使用场景"></a>16、var let const的区别及使用场景</h5><blockquote>
+<p>使用var声明的变量，其作用域为该语句所在的函数内，且存在变量提升现象，后面的覆盖前面的<br>使用let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升, 不能重复声明<br>使用const声明的是常量，在后面出现的代码中不能再修改该常量的内存</p>
+</blockquote>
+<h5 id="17、如何理解es6中的类？"><a href="#17、如何理解es6中的类？" class="headerlink" title="17、如何理解es6中的类？"></a>17、如何理解es6中的类？</h5><blockquote>
+<p>首先,JS作为一门非面向对象语言，在es6之前，并没有提供对类的支持，我们常用的做法是通过构造函数来模拟类的实现, 通过将属性及方法定义在原型上共享给其实例</p>
+</blockquote>
+<blockquote>
+<p>ES6 中的Class<br>es6中的class只是一个语法糖，class的写法只是让对象原型看起来更加清晰<br>每个类中都有一个constructor方法，如果没有显示定义， 会默认添加一个空的constructor，等同于ES5中的构造函数, 类的所有方法都是定义在类的prototype属性上面，二者的主要区别在于Class必须使用new调用, ES5中构造函数不使用new也可以调用, class 中新增静态方法(static)关键字, 静态方法不能被继承只有通过类本身来调用</p>
+</blockquote>
+<blockquote>
+<p>Extends 继承<br>class 也可以通过extends 关键字实现继承<br>extends 注意点<br>使用extends 继承时，子类构造函数中必须调用super(), 代表调用父类的构造函数<br>super虽然代码父类的constructor,但是返回的子类的实例<br>super作为函数调用时，代表类的构造函数<br>super作为对象调用时, 在普通方法中，指向父类的原型对象, 静态方法中指向父类</p>
+</blockquote>
+<h5 id="18、如何理解es6中的Promise？"><a href="#18、如何理解es6中的Promise？" class="headerlink" title="18、如何理解es6中的Promise？"></a>18、如何理解es6中的Promise？</h5><blockquote>
+<p>参考回答<br>js是单线程的，也就是说一次只能完成一个任务，为了解决这个问题，js将任务的执行模式分为两种， 同步和异步, 在es5中我们处理异步只能通过的回调的方式进行处理，在多层异步中，回调会一层一层嵌套，也就是所谓的回调地狱，promise就是异步编程的一种解决方案</p>
+</blockquote>
+<blockquote>
+<p>Promise<br>特点:<br>对象的状态不受外界影响, promise对象代表一个异步操作，有三种状态pendding(进行中), fulfilled(成功), rejected(失败)<br>一旦状态改变，就不会再变, 状态的改变只有两种可能, pendding &#x3D;&gt; fulfilled及pendding &#x3D;&gt; rejected<br>基本用法:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span>(<span class="params">resolve, reject</span>)&#123; </span><br><span class="line"><span class="comment">// ... some code  </span></span><br><span class="line"><span class="keyword">if</span></span><br><span class="line">(</span><br><span class="line"><span class="comment">/* 异步操作成功 */</span></span><br><span class="line">)&#123;</span><br><span class="line">    resolve</span><br><span class="line">(</span><br><span class="line">value</span><br><span class="line">);</span><br><span class="line"><span class="comment">// 将状态从pendding变成fulfilled</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    reject</span><br><span class="line">(</span><br><span class="line">error</span><br><span class="line">);</span><br><span class="line"><span class="comment">// 将状态从pendding变成rejected</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>promise 生成实例后可以使用then方法接收resolved状态和rejected状态的回调函数</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">promise.<span class="title function_">then</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;resolved&#x27;</span>)</span><br><span class="line">&#125;,<span class="function">()=&gt;</span>&#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;rejected&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>promise原型上具有catch方法， catch方法是rejection的别名， 用于指定发生错误时的回调函数</p>
+</blockquote>
+<blockquote>
+<p>promise原型上具有finally方法，用于不管promise对象最后的状态如何，都会执行的操作</p>
+</blockquote>
+<blockquote>
+<p>Promise.all方法用于将多个 Promise 实例，包装成一个新的 Promise 实例</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="title class_">Promise</span>.<span class="title function_">all</span>([p1,p2,p3...])</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>特点:<br>参数都是promise实例，如果不是会调用promise.resolve方法将其转为promise实例<br>p的奖态由传入的promise实例的状态决定<br>promise实例状态都变成fulfilled,p状态为fulfilled<br>promise实例状态一个变成rejected,p状态为rejected</p>
+</blockquote>
+<h5 id="19、如何理解es6中的Proxy？"><a href="#19、如何理解es6中的Proxy？" class="headerlink" title="19、如何理解es6中的Proxy？"></a>19、如何理解es6中的Proxy？</h5><blockquote>
+<p>Proxy（代理） 定义<br>可以理解为为目标对象架设一层拦截，外界对该对象的访问，都必须通过这层拦截<br>简单示例:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> <span class="title class_">Proxy</span></span><br><span class="line">(&#123;&#125;, &#123;  </span><br><span class="line">get</span><br><span class="line">: <span class="function">(<span class="params">target, key, receiver</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="keyword">return</span></span><br><span class="line"><span class="string">&#x27;JS&#x27;</span></span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line"><span class="string">`get <span class="subst">$&#123;key&#125;</span>`</span></span><br><span class="line">)</span><br><span class="line">     &#125;,</span><br><span class="line">set</span><br><span class="line">: <span class="function">(<span class="params">target, key, value, receiver</span>) =&gt;</span> &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line"><span class="string">`set <span class="subst">$&#123;key&#125;</span>`</span></span><br><span class="line">)</span><br><span class="line">     &#125;,</span><br><span class="line"> &#125;)</span><br><span class="line"> obj.<span class="property">name</span> = <span class="string">&#x27;JS Proxy&#x27;</span></span><br><span class="line"><span class="comment">// set name</span></span><br><span class="line"><span class="comment">// JS Proxy</span></span><br><span class="line"> obj.<span class="property">name</span> </span><br><span class="line"><span class="comment">// 这里进入get的回调函数，所有直接返回 JS </span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>从上面的示例中可以看出，Proxy存在一种机制，可以对外界的读写操作进行改写<br>Proxy 实例方法<br>proxy除了代理get,set操作，还能代理其它的操作，如下</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">handler.<span class="title function_">getPrototypeOf</span>()</span><br><span class="line"><span class="comment">// 在读取代理对象的原型时触发该操作，比如在执行 Object.getPrototypeOf(proxy) 时。</span></span><br><span class="line">handler.<span class="title function_">setPrototypeOf</span>()</span><br><span class="line"><span class="comment">// 在设置代理对象的原型时触发该操作，比如在执行 Object.setPrototypeOf(proxy, null) 时。</span></span><br><span class="line">handler.<span class="title function_">isExtensible</span>()</span><br><span class="line"><span class="comment">// 在判断一个代理对象是否是可扩展时触发该操作，比如在执行 Object.isExtensible(proxy) 时。</span></span><br><span class="line">handler.<span class="title function_">preventExtensions</span>()</span><br><span class="line"><span class="comment">// 在让一个代理对象不可扩展时触发该操作，比如在执行 Object.preventExtensions(proxy) 时。</span></span><br><span class="line">handler.<span class="title function_">getOwnPropertyDescriptor</span>()</span><br><span class="line"><span class="comment">// 在获取代理对象某个属性的属性描述时触发该操作，比如在执行 Object.getOwnPropertyDescriptor(proxy, &quot;foo&quot;) 时。</span></span><br><span class="line">handler.<span class="title function_">defineProperty</span>()</span><br><span class="line"><span class="comment">// 在定义代理对象某个属性时的属性描述时触发该操作，比如在执行 Object.defineProperty(proxy, &quot;foo&quot;, &#123;&#125;) 时。</span></span><br><span class="line">handler.<span class="title function_">has</span>()<span class="comment">// 在判断代理对象是否拥有某个属性时触发该操作，比如在执行 &quot;foo&quot; in proxy 时。</span></span><br><span class="line">handler.<span class="title function_">get</span>()</span><br><span class="line"><span class="comment">// 在读取代理对象的某个属性时触发该操作，比如在执行 proxy.foo 时。</span></span><br><span class="line">handler.<span class="title function_">set</span>()</span><br><span class="line"><span class="comment">// 在给代理对象的某个属性赋值时触发该操作，比如在执行 proxy.foo = 1 时。</span></span><br><span class="line">handler.<span class="title function_">deleteProperty</span>()</span><br><span class="line"><span class="comment">// 在删除代理对象的某个属性时触发该操作，比如在执行 delete proxy.foo 时。</span></span><br><span class="line">handler.<span class="title function_">ownKeys</span>()</span><br><span class="line"><span class="comment">// 在获取代理对象的所有属性键时触发该操作，比如在执行 Object.getOwnPropertyNames(proxy) 时。</span></span><br><span class="line">handler.<span class="title function_">apply</span>()</span><br><span class="line"><span class="comment">// 在调用一个目标对象为函数的代理对象时触发该操作，比如在执行 proxy() 时。</span></span><br><span class="line">handler.<span class="title function_">construct</span>()</span><br><span class="line"><span class="comment">// 在给一个目标对象为构造函数的代理对象构造实例时触发该操作，比如在执行new proxy() 时。</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为什么要使用Proxy<br>拦截和监视外部对对象的访问<br>降低函数或类的复杂度<br>在复杂操作前对操作进行校验或对所需资源进行管理</p>
+</blockquote>
+<h5 id="20、如何理解es6中的decorator？"><a href="#20、如何理解es6中的decorator？" class="headerlink" title="20、如何理解es6中的decorator？"></a>20、如何理解es6中的decorator？</h5><blockquote>
+<p>定义<br>Decorator是ES7中的提案，概念借鉴于python， 它作用于一个目标类为其添加属性于方法<br>我们用一个比喻来理解Decorator, 把孙悟空看成是一个类，那么棒子就是装饰器为其装备的武器<br>代码理解:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@stick</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Monkey</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">stick</span>(<span class="params">target</span>)&#123;</span><br><span class="line"><span class="comment">// 第一个参数就是目标类的本身</span></span><br><span class="line">target.<span class="property">ATK</span> =<span class="number">100000</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Monkey</span>.<span class="property">ATK</span> </span><br><span class="line"><span class="comment">// 为悟空装备了棒子，攻击力提高了100000</span></span><br><span class="line"><span class="comment">// 如果一个参数不够用，可以在装饰器外层再包一层</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">stick</span>(<span class="params">atk</span>)&#123;   </span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">targt</span>)&#123;</span><br><span class="line">        target.<span class="property">ATK</span> = atk</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="title function_">stick</span>(<span class="number">200000</span>)</span><br><span class="line"><span class="comment">// 这样我们就为悟空增加了200000攻击力</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Monkey</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Decorator 不仅能修饰类，也能修饰类的方法</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Monkey</span> &#123;</span><br><span class="line">@setName</span><br><span class="line">   <span class="title function_">name</span>(<span class="params"></span>) &#123;        </span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">name</span> = <span class="string">&#x27;孙悟空&#x27;</span>  </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Decorator 只能修饰类及类的方法,不能修饰于函数,因为存在函数提升</p>
+</blockquote>
+<blockquote>
+<p>Mixin<br>在修饰器基础上，我们可以实现mixin(混入),意思在一个对象中混入另一个对象的方法<br>代码示例:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">mixins</span>(<span class="params">...list</span>) &#123;  </span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">target</span>) &#123;    </span><br><span class="line">		<span class="title class_">Object</span>.<span class="title function_">assign</span>(target.<span class="property"><span class="keyword">prototype</span></span>, ...list)  </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> skill = &#123;</span><br><span class="line">    <span class="title function_">shapeshifting</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;72变&#x27;</span>)    </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="title function_">mixins</span>(skill)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Monkey</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">assign</span>(<span class="title class_">Monkey</span>.<span class="property"><span class="keyword">prototype</span></span>, skill)</span><br><span class="line"><span class="keyword">const</span> swk = <span class="keyword">new</span> <span class="title class_">Monkey</span>()</span><br><span class="line">swk.<span class="title function_">shapeshifting</span>() </span><br><span class="line"><span class="comment">// 72变</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用Decorator的好处<br>扩展功能，相对于继承增加了更多的灵活性<br>代码可读性更高，装饰器正确命名相当于注释</p>
+</blockquote>
+<h5 id="21、Es6中新增的数据类型有哪些？使用场景？"><a href="#21、Es6中新增的数据类型有哪些？使用场景？" class="headerlink" title="21、Es6中新增的数据类型有哪些？使用场景？"></a>21、Es6中新增的数据类型有哪些？使用场景？</h5><blockquote>
+<p>es6中新增一种原始数据类型Symbol,最大的特点是唯一性，Symbol值通过Symbol函数生成, 在es5中对象的属性都是字符串，我们使用他人定义的对象，然后去新增自己的属性，这样容易起冲突覆盖原有的属性, Symbol也可以看成为一个字符串，不过这个字符能保证是独一无二的<br>基本示例:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Object</span></span><br><span class="line"><span class="keyword">const</span> obj =&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;JS&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="property">name</span> = <span class="string">&#x27;JS每日一题&#x27;</span></span><br><span class="line"><span class="comment">// Symbol</span></span><br><span class="line"><span class="keyword">const</span> name =<span class="title class_">Symbol</span>(<span class="string">&#x27;name&#x27;</span>) </span><br><span class="line"><span class="comment">// 这里的参数没有特殊意义，可以看成为Symbol加了一个标记</span></span><br><span class="line">obj[name] =<span class="string">&#x27;JS每日一题&#x27;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Symbol用法<br>Symbol 目前有多种写法</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一</span></span><br><span class="line"><span class="keyword">const</span> title =<span class="title class_">Symbol</span>()</span><br><span class="line"><span class="keyword">const</span> obj =&#123;&#125;</span><br><span class="line">obj[title] = <span class="string">&#x27;JS每日一题&#x27;</span></span><br><span class="line"><span class="comment">// 二</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;    </span><br><span class="line">[title]: <span class="string">&#x27;JS每日一题&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 三</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, title, &#123;</span><br><span class="line"> <span class="attr">value</span>: <span class="string">&#x27;JS每日一题&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line">obj[title] </span><br><span class="line"><span class="comment">// 输出的结果都为JS每日一题</span></span><br><span class="line">这里注意一下，<span class="title class_">Symbol</span> 做为属性名时，不能用点去读取</span><br><span class="line">obj.<span class="property">title</span> </span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Symbol作为属性名，只有通过Object.getOwnPropertySymbols 方法返回</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> attrs = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>(obj)</span><br><span class="line"><span class="comment">// [Symbol[title]]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Symbol.for()<br>如果我们想要重复Symbol可以使用Symbol.for， Smybol.for()及Smybol()的区别在于Symbol.for()会先去查找全局下有没有声明过，如果有就返回该值，没有就新建一个，Symbol()每一次调用都会新建一个<br>代码理解:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> title = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;JS每日一题&#x27;</span>)</span><br><span class="line">....<span class="property">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;JS每日一题&#x27;</span>)</span><br><span class="line"><span class="comment">//调用多次都是使用的第一次声明的值</span></span><br><span class="line"><span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;JS每日一题&#x27;</span>)  === <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&#x27;JS每日一题&#x27;</span>) <span class="comment">// true</span></span><br><span class="line"><span class="keyword">const</span> title = <span class="title class_">Symbol</span>(<span class="string">&#x27;JS每日一题&#x27;</span>)</span><br><span class="line"><span class="title class_">Symbol</span>(<span class="string">&#x27;JS每日一题&#x27;</span>) === <span class="title class_">Symbol</span>(<span class="string">&#x27;JS每日一题&#x27;</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>总结<br>Symbol的特点<br>独一无二<br>不能隐式转换<br>不能与其它数据类型做运算<br>不能使用点运算符进行操作<br>ps: 今天答题的小伙伴多次都提到了map,set，，补充一下，新增的数据类型只有Symbol一种，map,set是新增的数据结构 <del>_</del></p>
+</blockquote>
+<blockquote>
+<p>持续更新中…<a target="_blank" rel="noopener" href="https://blog.csdn.net/angle_lzc">&amp;copy;lzccheng</a></p>
+</blockquote>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://rocky08808.github.io/blog/2022/04/22/jsInterview2/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://rocky08808.github.io/blog/2022/04/22/jsInterview2/";
+            const title         = "「js 进阶问题」";
+            const excerpt       = `1、html渲染过程
+参考回答: 浏览器渲染页面是一个从上至下的过程，当拿到html以后首先会生成dom树，加载解析css构建cssom树，解析css的时候不会阻塞进程，我们通常会把首屏样式放到head里面，然后加载执行js，在js里...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/blog/tags/javascript/" rel="tag">javascript</a>, <a class="tag-none-link" href="/blog/tags/%E5%B9%B2%E8%B4%A7/" rel="tag">干货</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2022-04-22T04:19:10.565Z" itemprop="dateModified">最后编辑：2022-04-22</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" vue进阶问题" href="/blog/2022/04/22/vueInterview/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/blog/images/avatar.webp" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">分享vue、flutter、ract、node等干货，做个咸鱼前端人</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/blog/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                7
+            </span>
+        </a>
+        <a class="meta-item" href="/blog/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/blog/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                7
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/flutter/">flutter</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/javascript/">javascript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E6%95%99%E7%A8%8B%E6%96%87%E6%A1%A3/">教程文档</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/blog/tags/dart/" style="font-size: 0.7em;">dart</a> <a href="/blog/tags/flutter/" style="font-size: 0.7em;">flutter</a> <a href="/blog/tags/javascript/" style="font-size: 0.8em;">javascript</a> <a href="/blog/tags/vue/" style="font-size: 0.6em;">vue</a> <a href="/blog/tags/%E5%B9%B2%E8%B4%A7/" style="font-size: 0.8em;">干货</a> <a href="/blog/tags/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 0.6em;">快速搭建博客</a> <a href="/blog/tags/%E6%95%99%E7%A8%8B%E6%96%87%E6%A1%A3/" style="font-size: 0.6em;">教程文档</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/blog/2022/04/22/jsInterview2/"><i class="fa  fa-book"></i> js 进阶问题</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/blog/2022/04/22/vueInterview/"><i class="fa  fa-book"></i> vue进阶问题</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/blog/2022/04/22/jsInterview/"><i class="fa  fa-book"></i> js基础面试题</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/blog/2022/04/22/good/"><i class="fa  fa-book"></i> 前端干货</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/blog/2022/04/21/flutterProblem/"><i class="fa  fa-book"></i> flutter填坑记</a>
+            
+          
+        
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2017 - 2022 Lzccheng 版权所有.</li>
+                            <!-- <li>本站已运行<span id="span_dt">Loading...</span></li> -->
+                        </div>
+                        <!-- <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by Lzccheng.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div> -->
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/blog/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://unpkg.com/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/blog/";
+</script>
+
+
+    <script async src="/blog/js/candy.min.js"></script>
+
+
+
+
+    <script defer src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://unpkg.com/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/blog/js/kratosr.min.js"></script>
+<script defer src="/blog/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>

@@ -7,7 +7,6 @@ tags:
  - vue
 categories:
  - javascript
- 
 ---
 ##### 1.为什么要使用vue？
 >重点考察对vue的特性了解，三大框架的优缺点对比，以及跟传统操作dom的区别
