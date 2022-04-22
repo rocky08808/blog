@@ -4,7 +4,7 @@
   <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="">
-  <title>快速搭建博客 | Lzccheng</title>
+  <title>vue进阶问题 | Lzccheng</title>
   <meta name="author" content="Lzccheng" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -13,21 +13,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="快速搭建博客, 教程文档" />
+    <meta name="keywords" content="javascript, vue, 干货" />
   
-  <meta name="description" content="现成框架hexo文档地址：https:&#x2F;&#x2F;hexo.io&#x2F;1、安装hexo-cli 1npm i hexo-cli -g 2、创建项目 123hexo init &lt;folder&gt;cd &lt;folder&gt;npm install  生成的是默认的主题，可自行更换主题，https:&#x2F;&#x2F;hexo.io&#x2F;themes&#x2F; 3、生成新文章 1hexo new [layout] &lt;ti">
+  <meta name="description" content="1.为什么要使用vue？ 重点考察对vue的特性了解，三大框架的优缺点对比，以及跟传统操作dom的区别  2.vue有哪些生命周期及其使用场景？3.vue-router中keepalive怎么理解？ keep-alive是vue源码中实现的一个组件, 感兴趣的可以研究源码 https:&#x2F;&#x2F;github.com&#x2F;vuejs&#x2F;vue&#x2F;blob&#x2F;dev&#x2F;src&#x2F;core&#x2F;components&#x2F;keep-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速搭建博客">
-<meta property="og:url" content="https://rocky08808.github.io/blog/2022/04/21/buildBlog/index.html">
+<meta property="og:title" content="vue进阶问题">
+<meta property="og:url" content="https://rocky08808.github.io/blog/2022/04/22/vueInterview/index.html">
 <meta property="og:site_name" content="Lzccheng">
-<meta property="og:description" content="现成框架hexo文档地址：https:&#x2F;&#x2F;hexo.io&#x2F;1、安装hexo-cli 1npm i hexo-cli -g 2、创建项目 123hexo init &lt;folder&gt;cd &lt;folder&gt;npm install  生成的是默认的主题，可自行更换主题，https:&#x2F;&#x2F;hexo.io&#x2F;themes&#x2F; 3、生成新文章 1hexo new [layout] &lt;ti">
+<meta property="og:description" content="1.为什么要使用vue？ 重点考察对vue的特性了解，三大框架的优缺点对比，以及跟传统操作dom的区别  2.vue有哪些生命周期及其使用场景？3.vue-router中keepalive怎么理解？ keep-alive是vue源码中实现的一个组件, 感兴趣的可以研究源码 https:&#x2F;&#x2F;github.com&#x2F;vuejs&#x2F;vue&#x2F;blob&#x2F;dev&#x2F;src&#x2F;core&#x2F;components&#x2F;keep-">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-04-21T08:26:16.000Z">
-<meta property="article:modified_time" content="2022-04-21T13:53:03.254Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219140738851.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219140854442.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219140936526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219141134298.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019021914120826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219141238472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219141427419.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019021914195930.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219142043510.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219142549957.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219142704534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219142855100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190219143045407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2022-04-22T04:09:27.000Z">
+<meta property="article:modified_time" content="2022-04-22T04:12:40.989Z">
 <meta property="article:author" content="Lzccheng">
-<meta property="article:tag" content="快速搭建博客">
-<meta property="article:tag" content="教程文档">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="干货">
+<meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190219140738851.png">
   
   <!-- 站点验证相关 -->
   
@@ -136,15 +151,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="https://rocky08808.github.io/blog/2022/04/21/buildBlog/">
+    <link itemprop="mainEntityOfPage" href="https://rocky08808.github.io/blog/2022/04/22/vueInterview/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
-                <h1 class="kratos-entry-title text-center" itemprop="name headline">快速搭建博客</h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">vue进阶问题</h1>
             
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2022-04-21T08:26:16.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-04-21</time></li>
+                <li><time datetime="2022-04-22T04:09:27.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-04-22</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">Lzccheng</span>
                 </li>
@@ -152,7 +167,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        920
+                        ~2.51K
                     
                     字
                 </li>
@@ -162,27 +177,80 @@
         <div class="kratos-post-content">
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1650549183254"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1650600760989"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             <hr />
-            <div itemprop="articleBody"><h3 id="现成框架hexo"><a href="#现成框架hexo" class="headerlink" title="现成框架hexo"></a>现成框架hexo</h3><h4 id="文档地址：https-hexo-io"><a href="#文档地址：https-hexo-io" class="headerlink" title="文档地址：https://hexo.io/"></a>文档地址：<a target="_blank" rel="noopener" href="https://hexo.io/">https://hexo.io/</a></h4><p>1、安装hexo-cli</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-cli -g</span><br></pre></td></tr></table></figure>
-<p>2、创建项目</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>生成的是默认的主题，可自行更换主题，<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
-<p>3、生成新文章</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-<p>即可生成新文章，可在source目录下找到对应title名字的md文件，自行编辑即可，想了解更详细可访问文档<a target="_blank" rel="noopener" href="https://hexo.io/">https://hexo.io</a></p>
-<p>4、把博客放到GitPage<br> 1）、修改_config.yml的url为gitpage的url<br> 2）、把img的url改成相对路径</p>
-<p>md文件顶部基本属性：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章标题  // 标题</span><br><span class="line"><span class="built_in">date</span>: 1970-01-01 00:00:00  // 时间</span><br><span class="line">categories: Demo  // 分类</span><br><span class="line">tags:  // 标签</span><br><span class="line">- Tag0</span><br><span class="line">- Tag1</span><br><span class="line">- Tag2</span><br><span class="line">sticky: 100  // (number)重要的文章，把它们置顶吧！数字越大优先级越高哦~</span><br><span class="line">pic:  // 可以指定这篇文章是否使用自定义的缩略图名称（在文章资源文件夹内），而不是使用随机化的图标</span><br><span class="line">comments: <span class="literal">true</span>  // (<span class="literal">true</span>/false)是否为单篇文章指定开启或关闭评论区</span><br><span class="line">toc: <span class="literal">true</span>  // (<span class="literal">true</span>/false)该文章是否需要生成目录</span><br><span class="line">only:  // 指定文章显示的位置，有以下关键词：</span><br><span class="line">- home  // 在首页显示</span><br><span class="line">- category  // 在分类页显示</span><br><span class="line">- tag  // 在标签页显示 留空或是不配置此项，则文章在所有该出现的位置都会显示。 层级之间相互平等，没有覆盖关系。 特别地，如果配置了此项，但是使用的并不是以上的关键词（例如只留了一个- none，那么文章就被隐藏起来了）</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-
-<p>推荐主题：<a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">https://github.com/Candinya/Kratos-Rebirth</a></p>
+            <div itemprop="articleBody"><h5 id="1-为什么要使用vue？"><a href="#1-为什么要使用vue？" class="headerlink" title="1.为什么要使用vue？"></a>1.为什么要使用vue？</h5><blockquote>
+<p>重点考察对vue的特性了解，三大框架的优缺点对比，以及跟传统操作dom的区别</p>
+</blockquote>
+<h5 id="2-vue有哪些生命周期及其使用场景？"><a href="#2-vue有哪些生命周期及其使用场景？" class="headerlink" title="2.vue有哪些生命周期及其使用场景？"></a>2.vue有哪些生命周期及其使用场景？</h5><h5 id="3-vue-router中keepalive怎么理解？"><a href="#3-vue-router中keepalive怎么理解？" class="headerlink" title="3.vue-router中keepalive怎么理解？"></a>3.vue-router中keepalive怎么理解？</h5><blockquote>
+<p>keep-alive是vue源码中实现的一个组件, 感兴趣的可以研究源码 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/dev/src/core/components/keep-alive.js">https://github.com/vuejs/vue/blob/dev/src/core/components/keep-alive.js</a></p>
+</blockquote>
 <blockquote>
-<p>该主题自带鼠标点击效果</p>
+<p>什么是keepalive<br>我们平时开发中, 总有部分组件没有必要多次init, 我们需要将组件进行持久化，使组件状态维持不变，在下一次展示时， 也不会进行重新init<br>keepalive音译过来就是保持活着, 所以在vue中我们可以使用keepalive来进行组件缓存<br>基本使用</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20190219140738851.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>上面提到被keepalive包含的组件不会被再次init，也就意味着不会重走生命周期函数, 但是平常工作中很多业务场景是希望我们缓存的组件在再次渲染的能做一些事情,vue为keepalive提供了两个额外的hook<br>activated 当keepalive包含的组件再次渲染的时候触发<br>deactivated 当keepalive包含的组件销毁的时候触发<br>注: 2.1.0 版本后keepalive包含但被exclude排除的组件不会有以上两个hook<br>参数<br>keepalive可以接收3个属性做为参数进行匹配对应的组件进行缓存<br>include 包含的组件<br>exclude 排除的组件<br>max 缓存组件的最大值<br>其中include,exclude可以为字符，数组，以及正则表达式<br>max 类型为字符或者数字<br>代码理解</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20190219140854442.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>配合router使用</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20190219140936526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>总结<br>keepalive是一个抽象组件，缓存vnode，缓存的组件不会被mounted，为此提供activated 和 deactivated 钩子函数, 使用props max 可以控制缓存组件个数</p>
+</blockquote>
+<h5 id="4-Vue-use中都发生了什么？"><a href="#4-Vue-use中都发生了什么？" class="headerlink" title="4.Vue.use中都发生了什么？"></a>4.Vue.use中都发生了什么？</h5><blockquote>
+<p>源码地址: <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/dev/src/core/global-api/use.js">https://github.com/vuejs/vue/blob/dev/src/core/global-api/use.js</a></p>
+</blockquote>
+<blockquote>
+<p>定义<br>vue.use()往全局注入一个插件，供全局真接使用, 不需要单独引用<br>代码理解:</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20190219141134298.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>理解了其基本使用及作用，我们来看一下vue.use中都发生了什么<br>源码很少，所以直接摘抄了</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/2019021914120826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>结合代码理解</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20190219141238472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>总结<br>vue.use()为注册全局插件所用，接收函数或者一个包含install属性的对象为参数，如果参数带有install就执行install, 如果没有就直接将参数当install执行, 第一个参数始终为vue对象, 注册过的插件不会重新注册</p>
+</blockquote>
+<h5 id="5-New-vue-中发生了什么？"><a href="#5-New-vue-中发生了什么？" class="headerlink" title="5.New vue()中发生了什么？"></a>5.New vue()中发生了什么？</h5><blockquote>
+<p>先从语法上分析，new关键字在js语言中代表实例化一个对象, 而Vue实际上是一个类, 我们简单看一下源码，源码地址 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/dev/src/core/instance/index.js">https://github.com/vuejs/vue/blob/dev/src/core/instance/index.js</a></p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20190219141427419.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>接着我们追踪至_init函数，源码地址 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/dev/src/core/instance/init.js">https://github.com/vuejs/vue/blob/dev/src/core/instance/init.js</a></p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/2019021914195930.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20190219142043510.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>从上面的代码我们看见_init很清淅的干了几件事, 合并相关配置, 初始化生命周期，初始化事件中心，初始化渲染，初始化 data、props、computed、watcher 等<br>题外话<br>Vue初始化逻辑非常清淅，把不同的功能拆成一些单独的函数执行，这种思想值得借鉴和学习</p>
+</blockquote>
+<h5 id="6-Vue-js的template编译过程？"><a href="#6-Vue-js的template编译过程？" class="headerlink" title="6.Vue.js的template编译过程？"></a>6.Vue.js的template编译过程？</h5><h5 id="7-Vue中的nextTick如何理解？"><a href="#7-Vue中的nextTick如何理解？" class="headerlink" title="7.Vue中的nextTick如何理解？"></a>7.Vue中的nextTick如何理解？</h5><blockquote>
+<p>讲在前面: 在vue中，数据发生变化之后DOM并不会立即变化，而是等同一事件循环中的所有数据变化完成之后，再统一进行视图更新，代码理解</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20190219142549957.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>nextTick什么情况下会触发<br>在同一事件循环中的数据变化后，DOM更新完成, 执行nextTick(callback)内的回调<br>对事件循环不理解的可以点这里<br>vue中nextTick的实现 ，源码地址 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/dev/src/core/util/next-tick.js">https://github.com/vuejs/vue/blob/dev/src/core/util/next-tick.js</a></p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20190219142704534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>总结<br>数据的变化到 DOM 的重新渲染是一个异步过程, 我们必须在 nextTick 后执行DOM相关的操作</p>
+</blockquote>
+<h5 id="8-Vue-router有哪些钩子？使用场景？"><a href="#8-Vue-router有哪些钩子？使用场景？" class="headerlink" title="8.Vue-router有哪些钩子？使用场景？"></a>8.Vue-router有哪些钩子？使用场景？</h5><blockquote>
+<p>前面我们用大白话讲过什么是钩子，这里在重复一下，就是在什么什么之前,什么什么之后,英文叫hooks,专业点叫生命周期，装逼点可以叫守卫…<br>vue-router中也存在钩子的概念,分为三步记忆<br>全局守卫<br>路由独享守卫<br>组件独享守卫<br>全局守卫<br>很好理解，全局守卫就是能监听到全局的router动作<br>router.beforeEach 路由前置时触发<img src="https://img-blog.csdnimg.cn/20190219142855100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>组件独享守卫<br>组件内新一个守卫, beforeRouteUpdate,在组件可以被复用的情况下触发，如 &#x2F;demo&#x2F;:id, 在&#x2F;demo&#x2F;1 跳转&#x2F;demo&#x2F;2的时候，&#x2F;demo 可以被复用，这时会触发beforeRouteUpdate</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20190219143045407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZ2xlX2x6Yw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>注意在beforeRouteEnter前不能拿到当前组件的this，因为组件还有被创建，我们可以通过next(vm &#x3D;&gt; {console.log(vm)}) 回传当前组件的this进行一些逻辑操作<br>使用场景<br>路由进入前最典型的可以做一些权限控制, 路由离开时清除或存储一些信息,任务等等<br>总结<br>vue-router中钩子分为全局的，局部的，以及组件三种形式, 他们都有前置守卫以及后置守卫, 其中组件的前置守卫不能拿到当前组件的this，因组件还没有被创建，可以通过next的参数进行回传this，前置守卫必须调用next方法，否则不会进入下一个管道</p>
+</blockquote>
+<h5 id="9-什么情况下适合使合vuex？-Vuex使用中有几个步骤"><a href="#9-什么情况下适合使合vuex？-Vuex使用中有几个步骤" class="headerlink" title="9.什么情况下适合使合vuex？ Vuex使用中有几个步骤?"></a>9.什么情况下适合使合vuex？ Vuex使用中有几个步骤?</h5><blockquote>
+<p>持续更新中…</p>
 </blockquote>
 </div>
         </div>
@@ -237,7 +305,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "https://rocky08808.github.io/blog/2022/04/21/buildBlog/",
+                text: "https://rocky08808.github.io/blog/2022/04/22/vueInterview/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -249,12 +317,13 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "https://rocky08808.github.io/blog/2022/04/21/buildBlog/";
-            const title         = "「快速搭建博客」";
-            const excerpt       = `现成框架hexo文档地址：https://hexo.io/1、安装hexo-cli
-1npm i hexo-cli -g
-2、创建项目
-123hexo init &lt;folder&gt;cd &lt;folder&gt;npm i...`;
+            const hostUrl       = "https://rocky08808.github.io/blog/2022/04/22/vueInterview/";
+            const title         = "「vue进阶问题」";
+            const excerpt       = `1.为什么要使用vue？
+重点考察对vue的特性了解，三大框架的优缺点对比，以及跟传统操作dom的区别
+
+2.vue有哪些生命周期及其使用场景？3.vue-router中keepalive怎么理解？
+keep-alive是vue源码中...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -273,10 +342,10 @@
             <div class="footer-tag clearfix">
                 <div class="pull-left">
                 <i class="fa fa-tags"></i>
-                    <a class="tag-none-link" href="/blog/tags/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" rel="tag">快速搭建博客</a>, <a class="tag-none-link" href="/blog/tags/%E6%95%99%E7%A8%8B%E6%96%87%E6%A1%A3/" rel="tag">教程文档</a>
+                    <a class="tag-none-link" href="/blog/tags/javascript/" rel="tag">javascript</a>, <a class="tag-none-link" href="/blog/tags/vue/" rel="tag">vue</a>, <a class="tag-none-link" href="/blog/tags/%E5%B9%B2%E8%B4%A7/" rel="tag">干货</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-04-21T13:53:03.254Z" itemprop="dateModified">最后编辑：2022-04-21</time>
+                    <time datetime="2022-04-22T04:12:40.989Z" itemprop="dateModified">最后编辑：2022-04-22</time>
                 </div>
             </div>
         </footer>
@@ -285,13 +354,9 @@
         <nav class="navigation post-navigation clearfix" role="navigation">
             
             <div class="nav-previous clearfix">
-                <a title=" flutter" href="/blog/2022/04/21/flutter/">&lt; 上一篇</a>
+                <a title=" js基础面试题" href="/blog/2022/04/22/jsInterview/">&lt; 上一篇</a>
             </div>
             
-            
-            <div class="nav-next clearfix">
-                <a title=" flutter填坑记" href="/blog/2022/04/21/flutterProblem/">下一篇 &gt;</a>
-            </div>
             
         </nav>
     
