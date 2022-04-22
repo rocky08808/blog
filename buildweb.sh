@@ -13,7 +13,7 @@ git add .
 echo '=== git add === done'
 time=$(date "+%Y-%m-%d-%H:%M:%S")
 commit_name="build_${time}"
-git commit -am "${commit_name}"
+git commit -am $commit_name
 echo "=== git commit ${commit_name} === done"
 git push origin master
 echo '=== git push === done'
