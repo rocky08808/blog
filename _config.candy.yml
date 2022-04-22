@@ -45,7 +45,7 @@ group_link:
 contact:
   weibo: 
   mail: 
-  telegram:
+  telegram: rocky0880
   twitter: 
   facebook: 
   linkedin: 
@@ -127,7 +127,7 @@ livere:
 
 # APlayer 左下角音乐播放器
 aplayer:
-  enabled: false
+  enabled: true
   playlist: 
   meting:
     server: netease
@@ -168,7 +168,7 @@ jsconfig:
       random_amount: 20 # 表示从1~20
       filename: "images/thumb/thumb_{no}.webp" # 相对于主题根目录，表示文件名的格式, {no} 用以指代随机的编号。
                                               # 如果包含 // 表示使用指定域名的绝对路径（例如第三方图床服务等），那么会忽略 CDN 选项
-    createTime: "2018/05/06 17:03:12"
+    createTime: "2017/09/01"
     donateBtn: "支持我~"
     scanNotice: "扫一扫，好不好？"
     qr_alipay: "/blog/images/alipayqr.webp"

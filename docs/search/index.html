@@ -47,6 +47,8 @@
   
   
   
+    <link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+  
   
     <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   
@@ -151,7 +153,7 @@
             <p>搜索多个关键词时请用空格分割，例如「javascript react 干货」这样；</p>
             <p>您也可以使用这些标签碰碰运气哦~</p>
             <p class="search-demo-tags">
-                <a href="/blog/tags/javascript/" style="font-size: 24px; color: #6c7588">javascript</a> <a href="/blog/tags/react/" style="font-size: 18px; color: #b2b7be">react</a> <a href="/blog/tags/%E5%B9%B2%E8%B4%A7/" style="font-size: 24px; color: #6c7588">干货</a> <a href="/blog/tags/%E5%AD%A6%E4%B9%A0%E4%B9%A6%E7%B1%8D/" style="font-size: 18px; color: #b2b7be">学习书籍</a> <a href="/blog/tags/flutter/" style="font-size: 21px; color: #8f96a3">flutter</a> <a href="/blog/tags/dart/" style="font-size: 21px; color: #8f96a3">dart</a> <a href="/blog/tags/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 18px; color: #b2b7be">快速搭建博客</a> <a href="/blog/tags/%E6%95%99%E7%A8%8B%E6%96%87%E6%A1%A3/" style="font-size: 18px; color: #b2b7be">教程文档</a> <a href="/blog/tags/vue/" style="font-size: 18px; color: #b2b7be">vue</a>
+                <a href="/blog/tags/javascript/" style="font-size: 24px; color: #6c7588">javascript</a> <a href="/blog/tags/react/" style="font-size: 18px; color: #b2b7be">react</a> <a href="/blog/tags/%E5%B9%B2%E8%B4%A7/" style="font-size: 24px; color: #6c7588">干货</a> <a href="/blog/tags/%E5%AD%A6%E4%B9%A0%E4%B9%A6%E7%B1%8D/" style="font-size: 18px; color: #b2b7be">学习书籍</a> <a href="/blog/tags/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 18px; color: #b2b7be">快速搭建博客</a> <a href="/blog/tags/%E6%95%99%E7%A8%8B%E6%96%87%E6%A1%A3/" style="font-size: 18px; color: #b2b7be">教程文档</a> <a href="/blog/tags/flutter/" style="font-size: 21px; color: #8f96a3">flutter</a> <a href="/blog/tags/dart/" style="font-size: 21px; color: #8f96a3">dart</a> <a href="/blog/tags/vue/" style="font-size: 18px; color: #b2b7be">vue</a>
             </p>
         </div>
     </div>
@@ -285,14 +287,14 @@
     </div>
 </div>
 <footer>
-    <div id="footer"  >
+    <div id="footer"  class="ap-lrc"  >
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 footer-list text-center">
                     <ul class="kratos-social-icons">
                         
                         
-                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/rocky0880"><i class="fa fa-telegram"></i></a></li>
                         
                         
                         
@@ -302,8 +304,8 @@
                     </ul>
                     <ul class="kratos-copyright">
                         <div>
-                            <li>&copy; 2017 - 2022 Lzccheng 版权所有.</li>
-                            <!-- <li>本站已运行<span id="span_dt">Loading...</span></li> -->
+                            <li>&copy; 2017-2022 Lzccheng 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
                         </div>
                         <!-- <div>
                             <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
@@ -312,11 +314,11 @@
                         <div>
                             <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
                             <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
-                        </div> -->
+                        </div>
                         <div>
                             
                             
-                        </div>
+                        </div> -->
                     </ul>
                 </div>
             </div>
@@ -359,6 +361,19 @@
 
     <script async src="/blog/js/candy.min.js"></script>
 
+
+
+    <script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
 
 
 
